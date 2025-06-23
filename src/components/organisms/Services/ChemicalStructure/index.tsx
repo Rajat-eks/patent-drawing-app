@@ -1,6 +1,6 @@
 import React from "react";
 import DummyImage from "../../../common/DummyImage";
-import ChemicalBanner from "../../../assets/img/home/services/_final_Chemical Structure & Chemical Sequence Drawings_s1.png";
+import ChemicalBanner from "../../../assets/img/home/services/chemical-structure.png";
 
 //IMAGES
 import Sample1 from "../../../assets/img/Samples/Chemical Structure/CT1.jpg";
