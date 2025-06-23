@@ -1,0 +1,1 @@
+declare module '@rajatv7865/usefetch';
