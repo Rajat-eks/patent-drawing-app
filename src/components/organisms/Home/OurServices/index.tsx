@@ -2,7 +2,7 @@ import React from "react";
 import Service1 from "../../../assets/img/home/services/UTILITY PATENT DRAWING_s1final.png";
 import Service2 from "../../../assets/img/home/services/DESIGN PATENT DRAWINGS_FINAL.png";
 import Service3 from "../../../assets/img/home/services/trademark s1_final.png";
-import Service4 from "../../../assets/img/home/services/_final_Chemical Structure & Chemical Sequence Drawings_s1.png";
+import Service4 from "../../../assets/img/home/services/chemical-structure.png";
 import Service5 from "../../../assets/img/home/services/3d modeling___s1__FINAL.png";
 import Service6 from "../../../assets/img/home/services/object patent drawings_s1_FINAL.png";
 
