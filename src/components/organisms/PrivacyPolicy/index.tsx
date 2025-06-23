@@ -8,7 +8,11 @@ interface PageProps {
 const PrivacyPolicy: React.FC<PageProps> = (props) => {
   return (
     <main className="bg-gradient-to-tr from-[#FBF3E8] to-[#D5E1E2] via-[#F0EFFB] p-4  md:py-10 md:px-60 font-poppins ">
-      <SEO description="Read PatDraw's (Effectual Services) Privacy Policy to understand how we collect, use, and protect your data, ensuring your information's confidentiality and security." keywords="Privacy Policy" title="Terms & Conditions" />
+      <SEO
+        description="Read PatDraw's (Effectual Services) Privacy Policy to understand how we collect, use, and protect your data, ensuring your information's confidentiality and security."
+        keywords="Privacy Policy"
+        title="Terms & Conditions"
+      />
       <div className="container mx-auto p-8  bg-white shadow-xl rounded-lg">
         <h1 className="text-3xl font-bold mb-2 text-center">Privacy Policy</h1>
 

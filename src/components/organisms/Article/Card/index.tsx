@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -27,13 +27,14 @@ const Card: React.FC<IndexProps> = ({ article }) => {
         </div>
       </div>
       <section>
-        <div>
+        <div className="w-full">
           <Image
             src={article?.filePath}
             alt={article?.heading}
             className="w-full"
-             width={100}
+            width={100}
             height={100}
+            
           />
         </div>
         <div className="py-8 px-2">
@@ -41,10 +42,10 @@ const Card: React.FC<IndexProps> = ({ article }) => {
             {article?.articleHeading}
           </h2>
           <p
-            className="text-[13px] text-justify pt-2 w-full"
+            className="text-[14px] text-justify pt-2 w-full"
             dangerouslySetInnerHTML={{
               __html:
-                article?.html?.slice(0, 260).replace(/\n/g, "<br>") + "...",
+                article?.html?.slice(0, 200).replace(/\n/g, "<br>") + "...",
             }}
           ></p>
         </div>
