@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import { ContactWithUs } from "../../../../services/contact";
 import { FiPhone } from "react-icons/fi";
@@ -7,7 +7,7 @@ import { FaFacebookF, FaXTwitter } from "react-icons/fa6";
 import { uploadFile } from "../../../../services/upload";
 import { RxCross2 } from "react-icons/rx";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface IndexProps {
   // define props here

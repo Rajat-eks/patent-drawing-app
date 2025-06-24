@@ -287,7 +287,7 @@ const Product: React.FC<ProductProps> = (props) => {
             </Link>
           </div>
           {service?.price !== 0 ? (
-            <>
+            <section>
               <div>
                 <h5 className="pt-4 mt-5 font-bold border-t-[1px] border-blue text-xl">
                   {" "}
@@ -578,9 +578,10 @@ const Product: React.FC<ProductProps> = (props) => {
                   </Link>
                 )}
               </div>
-            </>
+            </section>
           ) : (
             <Contact service={service?.name} />
+            // <h1>hello</h1>
           )}
         </section>
       </section>
