@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { FiUser } from "react-icons/fi";
 
 interface IndexProps {
   // define props here
@@ -12,29 +13,27 @@ const Card: React.FC<IndexProps> = ({ article }) => {
   return (
     <Link
       href={`/blog/${article?.articleSlug}`}
-      className="rounded border-[1px] hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] duration-100"
+      className="rounded border-[1px] border-[#083B95]  hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] duration-100"
     >
       <div className="p-2 flex items-center gap-4">
-        <Image
-          src="https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png"
-          alt="user"
-          width={40}
-          height={100}
-        />
+        <span className="w-10 h-10 rounded-full border-[1px] border-[#083B95] flex items-center justify-center">
+          {" "}
+          <FiUser size={25} color="#083B95" />
+        </span>
         <div>
           <h3 className="text-blue text-[16px]">By Patdraw</h3>
           <h6 className="text-red text-[13px]">{article?.articleDate}</h6>
         </div>
       </div>
       <section>
-        <div className="w-full">
+        <div className="relative w-full aspect-video">
+          {" "}
+          {/* Or any aspect ratio */}
           <Image
             src={article?.filePath}
             alt={article?.heading}
-            className="w-full"
-            width={100}
-            height={100}
-            
+            fill
+            className="object-fill"
           />
         </div>
         <div className="py-8 px-2">
@@ -45,7 +44,12 @@ const Card: React.FC<IndexProps> = ({ article }) => {
             className="text-[14px] text-justify pt-2 w-full"
             dangerouslySetInnerHTML={{
               __html:
-                article?.html?.slice(0, 200).replace(/\n/g, "<br>") + "...",
+                article?.html
+              
+                  ?.slice(0, 200)
+                      .trimStart()
+                  // 🔥 removes leading spaces
+                  + "...",
             }}
           ></p>
         </div>
