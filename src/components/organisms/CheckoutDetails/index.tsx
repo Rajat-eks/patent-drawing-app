@@ -138,9 +138,9 @@ const CheckoutDetails: React.FC<IndexProps> = ({
               </div>
             </div>
           </section>
-          <section className="border-[1px] bg-white px-6 py-6 md:w-[40%] w-full rounded">
+          {/* <section className="border-[1px] bg-white px-6 py-6 md:w-[40%] w-full rounded">
             <Register cart={cart} totalAmount={totalAmount} />
-          </section>
+          </section> */}
         </section>
       </section>
     </main>
