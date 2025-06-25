@@ -1,13 +1,12 @@
-"use client"
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+"use client";
+import React, { useCallback, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { ADDITEM } from "../../../store";
 import CartSample from "../../common/CartSample";
 import { SERVICE_INTERFACE, serviceData } from "../../../data/servicesDetails";
 import toast from "react-hot-toast";
 import GetInTouch from "../GetInTouch";
 import SEO from "../../common/SEO";
-import { uploadFile } from "../../../services/upload";
 import Contact from "./Contact";
 import Reviews from "../NewHome/Reviews";
 import FAQ from "./FAQ";
@@ -20,136 +19,11 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import OrderForm from "./OrderForm";
 
 interface ProductProps {
   // define props here
 }
-
-const outputFormat: { label: string; value: string }[] = [
-  {
-    label: "PDF",
-    value: "PDF",
-  },
-  {
-    label: "VSD (Visio)",
-    value: "VSD",
-  },
-  {
-    label: "CDR",
-    value: "CDR",
-  },
-  {
-    label: "JPEG",
-    value: "JPEG",
-  },
-  {
-    label: "PNG",
-    value: "PNG",
-  },
-  {
-    label: "Docx (MS Word)",
-    value: "Docx",
-  },
-  {
-    label: "PPT (MS Powerpoint)",
-    value: "PPT",
-  },
-  {
-    label: "DWG",
-    value: "DWG",
-  },
-  {
-    label: "IGES",
-    value: "IGES",
-  },
-  {
-    label: "CAT",
-    value: "CAT",
-  },
-  {
-    label: "CAD",
-    value: "CAD",
-  },
-  {
-    label: "SLD",
-    value: "SLD",
-  },
-  {
-    label: "AI",
-    value: "AI",
-  },
-  {
-    label: "ASM",
-    value: "ASM",
-  },
-  {
-    label: "STL",
-    value: "STL",
-  },
-  {
-    label: "EASM",
-    value: "EASM",
-  },
-  {
-    label: "STEP",
-    value: "STEP",
-  },
-  {
-    label: "Others/More than 1",
-    value: "OTHERS/MORE THAN 1",
-  },
-];
-
-const patentDrawings: { label: string; value: string }[] = [
-  {
-    label: "US",
-    value: "US",
-  },
-  {
-    label: "EP",
-    value: "EP",
-  },
-  {
-    label: "WIPO",
-    value: "WIPO",
-  },
-  {
-    label: "CA",
-    value: "CA",
-  },
-  {
-    label: "UK",
-    value: "UK",
-  },
-  {
-    label: "JP",
-    value: "JP",
-  },
-  {
-    label: "KR",
-    value: "KR",
-  },
-  {
-    label: "AU",
-    value: "AU",
-  },
-  {
-    label: "DE",
-    value: "DE",
-  },
-  {
-    label: "IL",
-    value: "IL",
-  },
-  {
-    label: "SG",
-    value: "SG",
-  },
-  {
-    label: "Other",
-    value: "Other",
-  },
-];
 
 const prices: any = [
   {
@@ -171,34 +45,9 @@ const prices: any = [
 ];
 
 const Product: React.FC<ProductProps> = (props) => {
-  const fileInputRef = useRef<HTMLInputElement>(null);
   const { serviceId } = useParams();
-  const { name } = useSelector((state: any) => state.auth);
   const [service, setService] = useState<SERVICE_INTERFACE>();
-  const dispatch = useDispatch();
   const navigate = useRouter();
-  const [countOfItem, setCountOfItem] = useState<number>(1);
-  const [isAgreementSigned, setIsAgreementSigned] = useState<boolean>(false);
-  const [loader, setLoader] = useState<boolean>(true);
-
-  //Handle form
-  const [data, setData] = useState({
-    isNDAPlace: "Yes",
-    ndaDetails: {
-      name: "",
-      email: "",
-      organization: "",
-      address: "",
-    },
-    docketNumber: "",
-    file: [],
-    alreadySignedNDA: false,
-    deliverySpeed: "Regular",
-    outPutFormat: "PDF",
-    patentOffice: "US",
-    applicationFillingDate: "",
-    additionalInfromation: "",
-  });
 
   const memoizedCallback = useCallback(() => {
     const data = serviceData.find(
@@ -215,38 +64,7 @@ const Product: React.FC<ProductProps> = (props) => {
     memoizedCallback();
   }, [serviceId]);
 
-  //ONCHANGE HANDLER
-  const onChangeHandler = (e: any) => {
-    const { name, value } = e.target;
-    setData({ ...data, [name]: value });
-  };
 
-  //ADD ITEM IN CART
-  const addItemHandler = () => {
-    dispatch(
-      ADDITEM({
-        itemId: serviceId,
-        quantity: countOfItem,
-        ...data,
-      })
-    );
-    navigate.push("/cart");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    toast.success("Item added Successfully!");
-  };
-
-  //UPLOAD FILE HANDLER
-  const uploadFileHandler = async (files: FileList) => {
-    try {
-      const response = await uploadFile(files);
-      setData({ ...data, file: response.data });
-      if (fileInputRef.current) {
-        fileInputRef.current.value = ""; // This clears the file input
-      }
-    } catch (error) {
-      console.error("Error uploading files:", error);
-    }
-  };
 
   return (
     <main className=" p-4 md:p-10">
@@ -289,295 +107,28 @@ const Product: React.FC<ProductProps> = (props) => {
           {service?.price !== 0 ? (
             <section>
               <div>
-                <h5 className="pt-4 mt-5 font-bold border-t-[1px] border-blue text-xl">
+                <h5 className="pt-4 mt-5 font-semibold border-t-[1px] border-blue text-[16px]">
                   {" "}
                   Submit your information to start your order/project
                 </h5>
                 <ul className=" p-2">
                   <li className="text-[13px] ">
-                    <a
-                      href={"/non_disclosure_agreement.pdf"}
+                    <Link
+                      href={"/non-disclosure-agreement"}
                       target="_blank"
-                      onClick={() => setIsAgreementSigned(true)}
                       className="font-semibold hover:text-blue"
                     >
                       Click here &nbsp;
-                    </a>
+                    </Link>
                     to read Non Disclosure Agreement (NDA). You can also sign
                     our NDA while submitting the below information.
                   </li>
                 </ul>
               </div>
-              <form action="" className="pt-3 font-poppins">
-                <div className="grid  grid-cols-1 md:grid-cols-2">
-                  <div className="flex flex-col justify-center-center">
-                    <label className="p-1 text-gray-700 font-[500]">
-                      NDA is in Place?
-                    </label>
-                    <select
-                      name="isNDAPlace"
-                      onChange={onChangeHandler}
-                      value={data?.isNDAPlace}
-                      className=" p-[6px] border-[1px] full md:w-60 rounded "
-                    >
-                      <option value="Yes">Yes</option>
-                      <option value="No">No</option>
-                    </select>
-                  </div>
 
-                  <div className="flex flex-col justify-center-center">
-                    <label className="p-1 text-gray-700 font-[550]">
-                      Docket Reference Number
-                    </label>
-                    <input
-                      className=" p-[6px] border-[1px] md:w-60 rounded "
-                      name="docketNumber"
-                      onChange={onChangeHandler}
-                      value={data?.docketNumber}
-                      type="text"
-                    />
-                  </div>
-                </div>
-                {data?.isNDAPlace === "No" && (
-                  <section
-                    className=" p-2 grid grid-cols-1 md:grid-cols-2 my-5 rounded"
-                    id="NDA_FORM"
-                  >
-                    <div className="flex flex-col justify-center-center">
-                      <label className="p-1 text-gray-700 font-[550]">
-                        Name
-                      </label>
-                      <input
-                        className=" p-[6px] border-[1px] w-full md:w-60 rounded "
-                        name="name"
-                        onChange={(e: any) =>
-                          setData({
-                            ...data,
-                            ndaDetails: {
-                              ...data.ndaDetails,
-                              [e.target.name]: e.target.value,
-                            },
-                          })
-                        }
-                        value={data?.ndaDetails?.name}
-                        type="text"
-                      />
-                    </div>
-                    <div className="flex flex-col justify-center-center">
-                      <label className="p-1 text-gray-700 font-[550]">
-                        Email
-                      </label>
-                      <input
-                        className=" p-[6px] border-[1px] w-full md:w-60 rounded "
-                        name="email"
-                        onChange={(e: any) =>
-                          setData({
-                            ...data,
-                            ndaDetails: {
-                              ...data.ndaDetails,
-                              [e.target.name]: e.target.value,
-                            },
-                          })
-                        }
-                        value={data?.ndaDetails?.email}
-                        type="text"
-                      />
-                    </div>
-                    <div className="flex flex-col justify-center-center">
-                      <label className="p-1 text-gray-700 font-[550]">
-                        Organization
-                      </label>
-                      <input
-                        className=" p-[6px] border-[1px] w-full md:w-60 rounded "
-                        name="organization"
-                        onChange={(e: any) =>
-                          setData({
-                            ...data,
-                            ndaDetails: {
-                              ...data.ndaDetails,
-                              [e.target.name]: e.target.value,
-                            },
-                          })
-                        }
-                        value={data?.ndaDetails?.organization}
-                        type="text"
-                      />
-                    </div>{" "}
-                    <div className="flex flex-col justify-center-center">
-                      <label className="p-1 text-gray-700 font-[550]">
-                        Address
-                      </label>
-                      <input
-                        className=" p-[6px] border-[1px] w-60 rounded "
-                        name="address"
-                        onChange={(e: any) =>
-                          setData({
-                            ...data,
-                            ndaDetails: {
-                              ...data.ndaDetails,
-                              [e.target.name]: e.target.value,
-                            },
-                          })
-                        }
-                        value={data?.ndaDetails?.address}
-                        type="text"
-                      />
-                    </div>
-                  </section>
-                )}
-
-                <div className="grid  grid-cols-1 md:grid-cols-2">
-                  <div className="flex flex-col justify-center-center">
-                    <label className="p-1 text-gray-700 font-[550]">
-                      Upload Files
-                    </label>
-                    <input
-                      className=" p-[6px] border-[1px] md:w-60 rounded "
-                      ref={fileInputRef}
-                      name="file"
-                      accept="/*"
-                      multiple={true}
-                      onChange={(e: any) => uploadFileHandler(e.target.files)}
-                      // value={data?.file[0]}
-                      type="file"
-                    />
-                    <p className="text-[12px] font-thin p-1 text-red">
-                      (max size: 50MB)
-                    </p>
-                  </div>
-                  <div className="flex flex-col justify-center-center">
-                    <label className="p-1 text-gray-700 font-[550]">
-                      Already/Previously Signed NDA with us{" "}
-                    </label>
-                    <select
-                      name="alreadySignedNDA"
-                      onChange={onChangeHandler}
-                      // value={data?.alreadySignedNDA}
-                      id=""
-                      className=" p-[6px] border-[1px] md:w-60 rounded "
-                    >
-                      <option value="Yes">Yes</option>
-                      <option value="No">No</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2">
-                  <div className="flex flex-col justify-center-center">
-                    <label className="p-1 text-gray-700 font-[550]">
-                      Select Output Format{" "}
-                      <span className="text-red-500">*</span>
-                    </label>
-                    <select
-                      name="outPutFormat"
-                      onChange={onChangeHandler}
-                      value={data?.outPutFormat}
-                      id=""
-                      className=" p-[6px] border-[1px] md:w-60 rounded "
-                    >
-                      {outputFormat.map(({ label, value }) => {
-                        return <option value={value}>{label}</option>;
-                      })}
-                    </select>
-                  </div>
-                  <div className="flex flex-col justify-center-center">
-                    <label className="p-1 text-gray-700 font-[550]">
-                      Select the patent office for which drawings are needed*
-                    </label>
-                    <select
-                      name="patentOffice"
-                      onChange={onChangeHandler}
-                      value={data?.patentOffice}
-                      id=""
-                      className=" p-[6px] border-[1px] md:w-60 rounded "
-                    >
-                      {patentDrawings.map(({ label, value }) => {
-                        return <option value={value}>{label}</option>;
-                      })}
-                    </select>
-                  </div>
-                </div>
-
-                <div className="flex flex-col justify-center-center">
-                  <label className="p-1 text-gray-700 font-[550]">
-                    Application filing date, if any
-                  </label>
-                  <textarea
-                    className=" p-[6px] border-[1px] w-full rounded "
-                    name="applicationFillingDate"
-                    onChange={onChangeHandler}
-                    value={data?.applicationFillingDate}
-                    id=""
-                    cols={6}
-                    rows={4}
-                  ></textarea>
-                  <p className="text-[12px] font-thin p-1 text-red">
-                    (This would help to keep the record and to ensure the
-                    availability of the draftsperson.)
-                  </p>
-                </div>
-
-                <div className="flex flex-col justify-center-center">
-                  <label className="p-1 text-gray-700 font-[550]">
-                    If you have Additional Information, please share it here.
-                  </label>
-                  <textarea
-                    className=" p-[6px] border-[1px] w-full rounded "
-                    name="additionalInfromation"
-                    onChange={onChangeHandler}
-                    value={data?.additionalInfromation}
-                    id=""
-                    cols={6}
-                    rows={4}
-                  ></textarea>
-                  <p className="text-[12px] font-thin p-1 text-red">
-                    ( Please enter the number of sheets you require and click
-                    "Add to Cart." Please note that the cost of patent drawings
-                    may vary with the final sheet count, as per Patent Office
-                    standards.)
-                  </p>
-                </div>
-              </form>
-              <div className="flex items-center gap-10 py-4">
-                <div className="flex items-center gap-2">
-                  <button
-                    className="text-3xl "
-                    onClick={() => setCountOfItem(countOfItem - 1)}
-                  >
-                    -
-                  </button>
-                  <input
-                    type="text"
-                    value={countOfItem}
-                    disabled
-                    onChange={(e: any) =>
-                      setCountOfItem(Number(e.target.value))
-                    }
-                    className="py-[1px] px-[2px] text-center rounded border-2 w-10 border-blue font-semibold"
-                  />
-                  <button
-                    className="text-2xl "
-                    onClick={() => setCountOfItem(countOfItem + 1)}
-                  >
-                    +
-                  </button>
-                </div>
-                {service?.price !== 0 ? (
-                  <button
-                    onClick={() => addItemHandler()}
-                    // disabled={!isAgreementSigned ? true : false}
-                    className="text-white py-[6px] font-semibold  text-[14px] bg-red rounded px-[10px] disabled:cursor-not-allowed"
-                  >
-                    Add to Cart
-                  </button>
-                ) : (
-                  <Link
-                    href={"/contact-us"}
-                    className="text-white py-[6px] font-semibold  text-[14px] bg-red rounded px-[10px] disabled:cursor-not-allowed"
-                  >
-                    Order Now
-                  </Link>
-                )}
-              </div>
+              {/*Order Details */}
+              <OrderForm  serviceId={serviceId} service={service}/>
+            
             </section>
           ) : (
             <Contact service={service?.name} />

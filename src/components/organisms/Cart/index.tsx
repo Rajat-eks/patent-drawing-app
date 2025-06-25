@@ -1,8 +1,13 @@
- 'use client'
+"use client";
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { serviceData } from "../../../data/servicesDetails";
-import { ADDQUANTITY, REMOVEITEM, SUBQUANTITY } from "../../../store";
+import {
+  ADDQUANTITY,
+  REMOVEALLITEM,
+  REMOVEITEM,
+  SUBQUANTITY,
+} from "../../../store";
 import EmptyCart from "../../assets/img/empty-cart.png";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import toast from "react-hot-toast";
@@ -13,16 +18,27 @@ import GetInTouch from "../GetInTouch";
 import SEO from "../../common/SEO";
 import Image from "next/image";
 import Link from "next/link";
+import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { onApproveOrder } from "@/services/paypal/approveOrder.service";
+import { CreateOrderPaypal } from "@/services/paypal/createOrder.service";
+import { useRouter } from "next/navigation";
+import { CreateOrder } from "@/services/razorpay";
+import { PaymentCompletionViaRazorpay } from "@/services/razorpay/paymentCompletion.service";
 
 interface IndexProps {
   // define props here
 }
 
 const Cart: React.FC<IndexProps> = (props) => {
+  const navigate = useRouter();
   const { item } = useSelector((state: any) => state.cart);
   const [cart, setCart] = useState<any>([]);
   const dispatch = useDispatch();
   const [isCheckout, setIsCheckout] = useState<boolean>(false);
+  const [buttonType, setButtonType] = useState<
+    "INVOICE" | "RAZORPAY" | "PAYPAL"
+  >();
+  const [razorPayValues, setRazorPayValues] = useState<any>();
 
   useEffect(() => {
     // Create a Map for item quantities
@@ -40,8 +56,8 @@ const Cart: React.FC<IndexProps> = (props) => {
         return {
           id: itemA.id,
           name: itemA.name,
-          outputFormat: matchedItem?.outPutFormat,
-          docketReferenceNumber: matchedItem?.docketNumber,
+          outputFormat: matchedItem?.format,
+          docketReferenceNumber: matchedItem?.docket,
           deliverySpeed: matchedItem?.deliverySpeed,
           quantity: quantityMapB.get(itemA.id),
           price: itemA?.price ?? 0,
@@ -69,6 +85,150 @@ const Cart: React.FC<IndexProps> = (props) => {
     toast.success("Item removed Successfully");
   };
 
+  //PAYMENT METHOD
+
+  // Create order (calls backend)
+  const [orderID, setOrderID] = useState(null);
+  const generateOrder = async () => {
+    try {
+      const response = await CreateOrderPaypal(totalAmount); // Adjust amount as needed
+      const { id } = response.data;
+      setOrderID(id);
+      console.log("id in response", response);
+      return id;
+    } catch (error) {
+      console.error("Error creating order:", error);
+    }
+  };
+  const onApprove = async (data: any) => {
+    try {
+      const response = await onApproveOrder({ orderID: orderID });
+    } catch (error) {
+      console.error("Error capturing payment:", error);
+    }
+  };
+
+  console.log("item", item);
+  //INVOICE HANDLER
+  const invoiceHandler = async () => {
+    try {
+      const payload = {
+        firstName: item[0]?.firstName,
+        lastName: item[0]?.lastName,
+        phone: item[0]?.phone,
+        email: item[0]?.email,
+        organization: item[0]?.company,
+        country: item[0]?.country,
+        youAre: item[0]?.firstName,
+        orderDetails: {
+          orderAmount: totalAmount,
+          deliveryAmount: 0,
+          cart: [
+            ...cart?.map((item: any) => {
+              return {
+                name: item?.name,
+                quantity: item?.quantity,
+                price: item?.price,
+                docketNumber: item?.docketNumber,
+                deliverySpeed: item?.deliverySpeed,
+                outputFormat: item?.outputFormat,
+              };
+            }),
+          ],
+        },
+      };
+      const response = await RequestInvoice(payload);
+      if (response?.status == true) {
+        toast.success(response.message);
+        navigate.push("/thank-you-invoice");
+      }
+      dispatch(REMOVEALLITEM(""));
+    } catch (error) {
+      throw new Error("Error when Reqest Invoice");
+    }
+  };
+  //RAZORPAY HANDLER
+  const razorpayHandler = async () => {
+    await handlePayment(item, totalAmount);
+  };
+
+  //HANDLE
+  const handlePayment = async (values: any, amount: number) => {
+    const orderResponse = await CreateOrder(amount); // GENERATE ID FROM SERVER
+    setButtonType("RAZORPAY");
+    if (orderResponse.status === true) {
+      const { order_id, currency, amount, razorpay_key } = orderResponse?.data;
+
+      // Razorpay options
+      const options = {
+        key: razorpay_key,
+        amount: amount * 100,
+        currency: currency,
+        name: "Patdraw",
+        description: "Payment for your order",
+        order_id,
+        handler: function (response: any) {
+          paymentSuccessHandler(response, values);
+        },
+        prefill: {
+          name: values[0]?.firstName + " " + values[0]?.lastName,
+          email: values[0]?.email,
+          contact: values[0]?.phone,
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+      if (window.Razorpay) {
+        const rzp1 = new window.Razorpay(options);
+        rzp1.open();
+      } else {
+        console.error("Razorpay SDK not loaded.");
+      }
+    }
+  };
+
+  //PAYMENT SUCCESS
+  const paymentSuccessHandler = async (response: any, values: any) => {
+    try {
+      const payload = {
+        firstName: values[0]?.firstName,
+        lastName: values[0]?.lastName,
+        phone: values[0]?.phone,
+        email: values[0]?.email,
+        organization: values[0]?.company,
+        country: values[0]?.country,
+        youAre: values[0]?.companyType,
+        orderDetails: {
+          orderAmount: totalAmount,
+          deliveryAmount: 0,
+          cart: [
+            ...cart?.map((item: any) => {
+              return {
+                name: item?.name,
+                quantity: item?.quantity,
+                price: item?.price,
+                docketNumber: item?.docketNumber,
+                deliverySpeed: item?.deliverySpeed,
+                outputFormat: item?.outputFormat,
+              };
+            }),
+          ],
+        },
+        paymentDetails: {
+          razorpayPaymentID: response?.razorpay_payment_id,
+          totalAmount,
+        },
+      };
+
+      const responseOfServer = await PaymentCompletionViaRazorpay(payload);
+      if (responseOfServer?.status == true) {
+        toast.success(responseOfServer?.message);
+      }
+    } catch (error) {
+      throw new Error("An error occured");
+    }
+  };
   if (cart.length == 0) {
     return (
       <section className="flex flex-col items-center justify-center p-4 bg-[#E4EDFB] h-screen w-full">
@@ -122,9 +282,6 @@ const Cart: React.FC<IndexProps> = (props) => {
                     />
                   </div>
                   <div className="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
-                    <p className="text-xs leading-3 text-gray-800 md:pt-0 pt-4">
-                      RF293
-                    </p>
                     <div className="flex items-center justify-between w-full">
                       <p className="text-base font-poppins font-black leading-none text-gray-800">
                         {item?.name}
@@ -150,14 +307,12 @@ const Cart: React.FC<IndexProps> = (props) => {
                       </div>
                     </div>
                     <p className="text-xs leading-3 text-gray-600 pt-2">
-                      Docket Reference Number: {item.d}
+                      Docket Reference Number: {item?.docketReferenceNumber}
                     </p>
                     <p className="text-xs leading-3 text-gray-600 py-4">
                       Output Format: {item.outputFormat}
                     </p>
-                    <p className="w-96 text-xs leading-3 text-gray-600">
-                      Delivery: {item?.deliverySpeed}
-                    </p>
+
                     <div className="flex items-center justify-between pt-5">
                       <div className="flex itemms-start">
                         <button
@@ -218,17 +373,38 @@ const Cart: React.FC<IndexProps> = (props) => {
               >
                 Checkout ({cart?.length} ITEMS)
               </button>
+              <div className="flex flex-col gap-2">
+                <button
+                  onClick={() => invoiceHandler()}
+                  className="text-blue border-blue shadow-md rounded py-2 w-full border-[1px] font-semibold"
+                >
+                  Request Invoice
+                </button>
+                <button
+                  type="submit"
+                  onClick={() => razorpayHandler()}
+                  className="text-blue border-blue shadow-md rounded py-2 w-full border-[1px] font-semibold"
+                >
+                  Pay via Razorpay
+                </button>
+
+                <PayPalScriptProvider
+                  options={{
+                    "client-id":
+                      "Acmy66oaHd--MKyOEbvEBW7aasjefCHaxfTrOTvY3odF2HBCh8oFLDY6dwuSDtYy9SWto5LNuI-sacIW",
+                  }}
+                >
+                  <PayPalButtons
+                    createOrder={generateOrder}
+                    onApprove={onApprove}
+                  />
+                </PayPalScriptProvider>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      {isCheckout && (
-        <CheckoutDetails
-          cart={cart}
-          setIsCheckout={setIsCheckout}
-          totalAmount={totalAmount}
-        />
-      )}
+
       <GetInTouch />
     </>
   );

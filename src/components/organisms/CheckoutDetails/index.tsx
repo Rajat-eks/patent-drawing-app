@@ -8,7 +8,7 @@ import { RequestInvoice } from "../../../services/product";
 import toast from "react-hot-toast";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Register from "./Register";
+// import Register from "./Register";
 
 interface IndexProps {
   setIsCheckout?: any;
@@ -139,25 +139,7 @@ const CheckoutDetails: React.FC<IndexProps> = ({
             </div>
           </section>
           <section className="border-[1px] bg-white px-6 py-6 md:w-[40%] w-full rounded">
-            <div className="flex flex-col items-center space-y-1">
-              <p className="text-[15px] font-semibold">
-                {isAlreadyUser
-                  ? "Already have an account?"
-                  : "Register as a New User"}
-              </p>
-              {/* <button
-                onClick={() => setIsAlreadyUser(!isAlreadyUser)}
-                className={`w-full py-2 text-white  rounded ${!isAlreadyUser ? "bg-red" : "bg-blue"}`}
-              >
-                {!isAlreadyUser ? "Sign In" : "Register"}
-              </button> */}
-            </div>
-            <span className="block w-full border-[1px] my-4 border-blue"></span>
-            {/* {!isAlreadyUser ? (
-              <Register cart={cart} totalAmount={totalAmount} />
-            ) : ( */}
             <Register cart={cart} totalAmount={totalAmount} />
-            {/* )} */}
           </section>
         </section>
       </section>

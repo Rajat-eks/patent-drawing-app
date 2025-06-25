@@ -15,7 +15,8 @@ export const findIndexOfService = (path: string) => {
 //GET COUNTRY
 
 export const getCountry = () => {
-  return Country.getAllCountries().map((country) => ({
+  return Country.getAllCountries().map((country,index) => ({
+    key:index,
     value: country.name,
     label: `${country.name} - ${country.isoCode}`,
   }));

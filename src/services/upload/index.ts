@@ -1,6 +1,6 @@
 import axiosObject from "../config.service";
 
-export const uploadFile = async (files: FileList) => {
+export const uploadFile = async (files: File[] | []) => {
   try {
     const formData = new FormData();
 
