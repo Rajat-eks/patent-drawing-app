@@ -193,7 +193,7 @@ const OrderForm = ({ serviceId, service }: any) => {
         <div className="col-span-2">
           <Input
             placeholder="Docket Reference Number"
-            required
+            
             {...formik.getFieldProps("docket")}
           />
         </div>

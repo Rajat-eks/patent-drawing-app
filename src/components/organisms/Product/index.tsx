@@ -64,8 +64,6 @@ const Product: React.FC<ProductProps> = (props) => {
     memoizedCallback();
   }, [serviceId]);
 
-
-
   return (
     <main className=" p-4 md:p-10">
       <SEO
@@ -127,8 +125,7 @@ const Product: React.FC<ProductProps> = (props) => {
               </div>
 
               {/*Order Details */}
-              <OrderForm  serviceId={serviceId} service={service}/>
-            
+              <OrderForm serviceId={serviceId} service={service} />
             </section>
           ) : (
             <Contact service={service?.name} />
