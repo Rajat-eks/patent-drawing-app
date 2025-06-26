@@ -4,7 +4,9 @@ import CountryList from "country-list-with-dial-code-and-flag";
 
 export const findIndexOfService = (path: string) => {
   const actualPath = path.split("/")[2];
-  const index = serviceData.find((item: {path:string}) => item.path === actualPath);
+  const index = serviceData.find(
+    (item: { path: string }) => item.path === actualPath
+  );
   if (index) {
     return index.id;
   } else {
@@ -15,8 +17,8 @@ export const findIndexOfService = (path: string) => {
 //GET COUNTRY
 
 export const getCountry = () => {
-  return Country.getAllCountries().map((country,index) => ({
-    key:index,
+  return Country.getAllCountries().map((country, index) => ({
+    key: index,
     value: country.name,
     label: `${country.name} - ${country.isoCode}`,
   }));

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useFormik } from "formik";
-import { getCountry } from "@/utils/helper";
+import { getCountry, getCountryCode } from "@/utils/helper";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
@@ -8,6 +8,7 @@ import { ADDITEM } from "@/store";
 import Link from "next/link";
 import { addToCart } from "@/services/order/cart.service";
 import { uploadFile } from "@/services/upload";
+import { DiVim } from "react-icons/di";
 
 const outputFormat = [
   { label: "PDF", value: "PDF" },
@@ -69,6 +70,7 @@ const OrderForm = ({ serviceId, service }: any) => {
       docket: "",
       filingDate: "",
       additionalInfo: "",
+      countryCode: "",
     },
 
     onSubmit: async (values) => {
@@ -77,6 +79,7 @@ const OrderForm = ({ serviceId, service }: any) => {
 
         const response = await addToCart({
           ...values,
+          phone: values.countryCode + values.phone,
           files: uploadFiles?.data,
           quantity: countOfItem,
           amount: service?.price,
@@ -101,7 +104,7 @@ const OrderForm = ({ serviceId, service }: any) => {
       }
     },
   });
-
+  console.log("for", formik.values);
   return (
     <section className="p-5">
       <form onSubmit={formik.handleSubmit} className="grid grid-cols-2 gap-5">
@@ -115,15 +118,20 @@ const OrderForm = ({ serviceId, service }: any) => {
           required
           {...formik.getFieldProps("lastName")}
         />
-        <Input
-          placeholder="Company or Organization Name"
-          required
-          {...formik.getFieldProps("company")}
+        <Select
+          placeholder="Select Country Code"
+          options={getCountryCode()}
+          {...formik.getFieldProps("countryCode")}
         />
         <Input
-          placeholder="Phone Number with Country Code"
+          placeholder="Phone Number"
           required
           {...formik.getFieldProps("phone")}
+        />
+        <Input
+          placeholder="Company Name"
+          required
+          {...formik.getFieldProps("company")}
         />
         <Input
           placeholder="Email"
@@ -158,7 +166,30 @@ const OrderForm = ({ serviceId, service }: any) => {
           options={patentDrawings}
           {...formik.getFieldProps("patentOffice")}
         />
-
+        {formik.values.ndaSigned == "No" && (
+          <div className="col-span-2 text-[14px] text-gray-700">
+            <p>
+              Your project details are important to us. To protect your
+              confidential information, we require all clients to complete a
+              Non-Disclosure Agreement (NDA) prior to sharing project
+              specifications.
+            </p>
+            <br />
+            <p className="">
+              <input type="checkbox" className="cursor-pointer" />{" "}
+              <b>
+                <Link href={"/non-disclosure-agreement"} target="_blank">
+                  I agree to the confidentiality terms.
+                </Link>
+              </b>{" "}
+              By selecting this checkbox, I acknowledge that: 1) I have reviewed
+              and accept the terms of the [Non-Disclosure Agreement], 2) I
+              understand this agreement becomes effective upon form submission,
+              and 3) The contact information I provide in the billing section is
+              accurate and complete.
+            </p>
+          </div>
+        )}
         <div className="col-span-2">
           <Input
             placeholder="Docket Reference Number"
@@ -178,14 +209,20 @@ const OrderForm = ({ serviceId, service }: any) => {
         <div className="col-span-2">
           <TextArea
             placeholder="If you have Additional Information, please share it here."
-            note={`( Please enter the number of sheets you require and click \"Add to Cart.\" Please note that the cost of patent drawings may vary with the final sheet count, as per Patent Office standards.)`}
+            note={``}
             {...formik.getFieldProps("additionalInfo")}
           />
         </div>
         <div className="col-span-2">
           <FileUpload files={files} setFiles={setFiles} />
         </div>
-        <section>
+
+        <section className="w-full col-span-2">
+          <p className="w-full text-[13px] text-red ">
+            Please enter the number of sheets you require and click "Add to
+            Cart." Please note that the cost of patent drawings may vary with
+            the final sheet count, as per Patent Office standards.
+          </p>
           <div className="flex items-center gap-10 py-4">
             <div className="flex items-center gap-2">
               <button
@@ -244,35 +281,141 @@ const Input = ({ name, placeholder, required, ...props }: any) => (
     <input
       name={name}
       required={required}
-      placeholder={placeholder}
+      // placeholder={placeholder}
       {...props}
       className="border border-[#083B95] rounded p-[6px] w-full text-gray-700 text-[16px] focus:outline-red"
     />
   </div>
 );
 
-const Select = ({ name, placeholder, options, required, ...props }: any) => (
-  <div className="flex flex-col text-[14px] text-gray-800">
-    <label htmlFor="">
-      {placeholder} {required && <span className="text-red font-bold">*</span>}
-    </label>
-    <select
-      name={name}
-      required={required}
-      {...props}
-      className="border border-[#083B95] rounded p-[8.2px] w-full text-gray-700 text-[16px] focus:outline-red"
-    >
-      <option value="" disabled>
+interface SearchableSelectProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  /** list of {label,value} items */
+  options: any[];
+  /** placeholder + visual label */
+  placeholder?: string;
+  /** show * if required (Formik validation still lives in your schema) */
+  required?: boolean;
+}
+
+const Select: React.FC<SearchableSelectProps> = ({
+  name = "",
+  value = "",
+  onChange,
+  onBlur,
+  placeholder = "Select…",
+  options,
+  required = false,
+  ...rest
+}) => {
+  /* local ui state */
+  const [query, setQuery]   = useState("");
+  const [open, setOpen]     = useState(false);
+  const [highlight, setHi]  = useState(0);
+
+  /* sync search box with incoming value (Formik) */
+  useEffect(() => {
+    const opt = options.find((o) => o.value === value);
+    setQuery(opt?.label ?? "");
+  }, [value, options]);
+
+  /* filter list */
+  const shown = options.filter((o) =>
+    o.label.toLowerCase().includes(query.toLowerCase())
+  );
+
+  /* send Formik-compatible change event */
+  const fireChange = (val: string) => {
+    if (onChange) {
+      const fake = {
+        target: { name, value: val },
+      } as unknown as React.ChangeEvent<HTMLInputElement>;
+      onChange(fake);
+    }
+  };
+
+  /* pick option */
+  const pick = (opt: any) => {
+    fireChange(opt.value);
+    setQuery(opt.label);
+    setOpen(false);
+  };
+
+  /* keyboard nav */
+  const keyNav: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (!open && ["ArrowDown", "ArrowUp"].includes(e.key)) setOpen(true);
+
+    if (e.key === "ArrowDown" && shown.length) {
+      e.preventDefault();
+      setHi((h) => (h + 1) % shown.length);
+    } else if (e.key === "ArrowUp" && shown.length) {
+      e.preventDefault();
+      setHi((h) => (h - 1 + shown.length) % shown.length);
+    } else if (e.key === "Enter" && open && shown.length) {
+      e.preventDefault();
+      pick(shown[highlight]);
+    }
+  };
+
+  /* close on outside click */
+  const wrap = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const close = (evt: MouseEvent) => {
+      if (!wrap.current?.contains(evt.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", close);
+    return () => document.removeEventListener("mousedown", close);
+  }, []);
+
+  return (
+    <div ref={wrap} className="relative flex flex-col text-sm text-gray-800">
+      <label className="mb-1">
         {placeholder}
-      </option>
-      {options.map((option: any) => (
-        <option key={option.value} value={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </select>
-  </div>
-);
+        {required && <span className="text-red-600 font-bold ml-0.5">*</span>}
+      </label>
+
+      {/* visible search box */}
+      <input
+        type="text"
+        placeholder={placeholder}
+        value={query}
+        onFocus={() => setOpen(true)}
+        onChange={(e) => {
+          setQuery(e.target.value);
+          setOpen(true);
+          setHi(0);
+        }}
+        onKeyDown={keyNav}
+        onBlur={onBlur}
+        autoComplete="off"
+        className="border border-[#083B95] rounded p-2 w-full text-base text-gray-700 focus:outline-red"
+        required={required && !value}
+        {...rest}
+      />
+
+      {/* dropdown */}
+      {open && (
+        <ul className="absolute z-20 mt-16 max-h-48 w-full overflow-y-auto rounded border border-gray-300 bg-white shadow">
+          {shown.length ? (
+            shown.map((opt, i) => (
+              <li
+                key={opt.value}
+                onMouseDown={() => pick(opt)}
+                className={`cursor-pointer p-2 ${
+                  i === highlight ? "bg-blue-100" : "hover:bg-blue-50"
+                }`}
+              >
+                {opt.label}
+              </li>
+            ))
+          ) : (
+            <li className="p-2 text-gray-500">No options found</li>
+          )}
+        </ul>
+      )}
+    </div>
+  );
+};
 
 const TextArea = ({ name, placeholder, note, required, ...props }: any) => (
   <div className="flex flex-col text-[14px] text-gray-800">
@@ -284,7 +427,7 @@ const TextArea = ({ name, placeholder, note, required, ...props }: any) => (
     )}
     <textarea
       name={name}
-      placeholder={placeholder}
+      // placeholder={placeholder}
       required={required}
       {...props}
       className="border border-[#083B95] rounded p-[6px] w-full text-gray-700 text-[16px] focus:outline-red"
@@ -306,6 +449,9 @@ const FileUpload = ({ files, setFiles }: any) => {
 
   return (
     <div className="w-full mx-auto mt-4">
+      <label htmlFor="" className="text-gray-700 text-[14px] font-semibold">
+        Upload Files
+      </label>
       <label
         htmlFor="file-upload"
         className="block w-full cursor-pointer rounded-lg border-2 border-dashed border-gray-300 bg-white p-6 text-center text-gray-500 hover:border-blue-500 hover:bg-blue-50 transition"
