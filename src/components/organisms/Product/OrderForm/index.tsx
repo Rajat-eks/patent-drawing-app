@@ -309,9 +309,9 @@ const Select: React.FC<SearchableSelectProps> = ({
   ...rest
 }) => {
   /* local ui state */
-  const [query, setQuery]   = useState("");
-  const [open, setOpen]     = useState(false);
-  const [highlight, setHi]  = useState(0);
+  const [query, setQuery] = useState("");
+  const [open, setOpen] = useState(false);
+  const [highlight, setHi] = useState(0);
 
   /* sync search box with incoming value (Formik) */
   useEffect(() => {

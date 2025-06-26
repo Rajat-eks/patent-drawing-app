@@ -13,7 +13,7 @@ const HeroSection: React.FC<HeroSectionProps> = (props) => {
         That Get Approved
       </h1>
       <p className="text-[13px] text-center">
-        Transform your innovations into precise, USPTO-compliant patent
+        Transform your innovations into precise, USPTO-compliant patent sketch /
         illustrations
       </p>
       <div className="flex gap-5 text-[14px] pt-4">

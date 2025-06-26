@@ -1,6 +1,6 @@
-'use client'
+"use client";
 import React, { useState } from "react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import {
   RxArrowUp,
   CiLocationOn,
@@ -82,7 +82,7 @@ const Footer: React.FC<IndexProps> = () => {
       <div className=" border-t-[1px]  bg-gradient-to-r from-[#E49698] to-[#798CB7] via-white flex flex-col md:flex-row items-center justify-between py-7 px-2 md:px-14">
         <div className="text-black flex flex-col gap-0 md:gap-1 items-start justify-start pb-3">
           <h2 className="md:text-xl font-poppins text-lg font-semibold">
-            Get updates from The Patent Drawings
+            Get Updates From The Patent Drawings Company
           </h2>
           <p className="text-[14px] py-1 sm:py-0 ">
             W&#39;ll be with you to identify new IP opportunities.
