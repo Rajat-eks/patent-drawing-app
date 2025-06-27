@@ -9,7 +9,6 @@ import { dummyImage as chemicalStructure } from "../Services/ChemicalStructure";
 import { dummyImage as designPatent } from "../Services/DesignPatent";
 import { PiGreaterThanBold } from "react-icons/pi";
 import Banner from "../../assets/img/sampleBanner.png";
-import SEO from "../../common/SEO";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -48,12 +47,6 @@ const Samples: React.FC<SamplesProps> = (props) => {
   };
   return (
     <>
-      <SEO
-        description="Browse our professional Patent Drawing Samples, including Utility Patent Drawing Sample and Design Patent Drawing Samples. All illustrations meet USPTO and international standards."
-        keywords="Patent Drawing Samples, Utility Patent Drawing Sample, Design Patent Drawing Samples"
-        title="Patent Drawing Samples | Utility, Design Patent Drawing Examples"
-        conanical="patent-drawing-samples"
-      />
       <section className="pt-4 ">
         <div className=" w-full h-[40vh] relative">
           <Image

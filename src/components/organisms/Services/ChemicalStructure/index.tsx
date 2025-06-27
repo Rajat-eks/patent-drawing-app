@@ -13,7 +13,6 @@ import Sample7 from "../../../assets/img/Samples/Chemical Structure/CT7.jpg";
 import Sample8 from "../../../assets/img/Samples/Chemical Structure/CT8.jpg";
 import Sample9 from "../../../assets/img/Samples/Chemical Structure/CT9.jpg";
 import Sample10 from "../../../assets/img/Samples/Chemical Structure/CT10.jpg";
-import SEO from "../../../common/SEO";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -69,11 +68,7 @@ export const dummyImage: IDUMMYIMAGE[] = [
 const ChemicalStructure: React.FC<IndexProps> = (props) => {
   return (
     <main>
-      <SEO
-        description="Obtain precise chemical structure drawings with our professional chemical structure drawing services, delivering accurate and timely representations for your research and patents."
-        keywords="Chemical Structure Drawings, Chemical Structure Drawing Services"
-        title="Chemical Structure Drawings | Chemical Structure Drawing Services"
-      />
+   
       <div className="flex flex-col gap-1">
         <h1 className="  text-2xl font-semibold text-blue font-poppins ">
           Chemical Structure

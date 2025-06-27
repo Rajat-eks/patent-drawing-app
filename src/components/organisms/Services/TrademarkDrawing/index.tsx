@@ -6,7 +6,6 @@ import TrademarkBanner from "../../../assets/img/home/services/trademark s1_fina
 import Sample1 from "../../../assets/img/Samples/Trademark Design/TM1.jpg";
 import Sample2 from "../../../assets/img/Samples/Trademark Design/TM2.jpg";
 import Sample3 from "../../../assets/img/Samples/Trademark Design/TM3.jpg";
-import SEO from "../../../common/SEO";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -35,11 +34,7 @@ const dummyImage: IDUMMYIMAGE[] = [
 const TrademarkDrawing: React.FC<IndexProps> = (props) => {
   return (
     <main>
-      <SEO
-        description="Secure your brand with precise trademark drawings through our professional trademark drawing services, delivering accurate and timely visual representations."
-        keywords="Trademark Drawings, Trademark Drawing Services"
-        title="Trademark Drawings | Trademark Drawing Services"
-      />
+      
       <div className="flex flex-col gap-1">
         <h1 className="  text-2xl font-semibold text-blue font-poppins ">
           Trademark Drawings

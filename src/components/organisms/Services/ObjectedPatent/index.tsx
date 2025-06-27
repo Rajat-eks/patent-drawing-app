@@ -5,7 +5,6 @@ import ObjectPatent from "../../../assets/img/home/services/object patent drawin
 //IMAGE
 import Sample1 from "../../../assets/img/Samples/Objected Patent Drawings/OPT1.jpg";
 import Sample2 from "../../../assets/img/Samples/Objected Patent Drawings/OPT2.jpg";
-import SEO from "../../../common/SEO";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -31,11 +30,6 @@ const dummyImage: IDUMMYIMAGE[] = [
 const ObjectedPatent: React.FC<IndexProps> = (props) => {
   return (
     <main>
-      <SEO
-        description="Resolve your patent rejections with our expert objected patent drawing services, providing accurate and timely revisions for your objected patent drawings."
-        keywords="Objected Patent Drawings, Objected Patent Drawing Services"
-        title="Objected Patent Drawings | Objected Patent Drawing Services"
-      />
       <div className="flex flex-col gap-1">
         <h1 className="  text-2xl font-semibold text-blue font-poppins ">
           Objected Patent Drawings
@@ -66,13 +60,13 @@ const ObjectedPatent: React.FC<IndexProps> = (props) => {
         </div>
       </section>
       <div className="flex flex-col items-center justify-center md:flex-row gap-4 my-4">
-              <Link
-                href="/product/objected-patent-drawings"
-                className="bg-red text-white p-3 rounded  text-[15px] flex items-center gap-1 py-2"
-              >
-               Order Your Accurate Objected Patent Drawings Now
-              </Link>
-            </div>
+        <Link
+          href="/product/objected-patent-drawings"
+          className="bg-red text-white p-3 rounded  text-[15px] flex items-center gap-1 py-2"
+        >
+          Order Your Accurate Objected Patent Drawings Now
+        </Link>
+      </div>
       <section className="border-[1px] rounded-b-lg mt-2">
         <h2 className="text-white text-2xl bg-blue text-center text-[18px] font-semibold">
           Objected Patent Drawing Samples

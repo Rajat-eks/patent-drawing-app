@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import DashboardLayout from "@/components/layout/dashboardLayout";
 
-export const metadata: Metadata = {
-  title: "PatDraw | Patent Drawing Services Company",
-  description:
-    "PatDraw, a leading patent drawing services company, delivers expert and mediatory support, ensuring precise and compliant patent illustrations for your inventions.",
-};
+// export const metadata: Metadata = {
+//   title: "PatDraw | Patent Drawing Services Company",
+//   description:
+//     "PatDraw, a leading patent drawing services company, delivers expert and mediatory support, ensuring precise and compliant patent illustrations for your inventions.",
+// };
 
 export default function RootLayout({
   children,

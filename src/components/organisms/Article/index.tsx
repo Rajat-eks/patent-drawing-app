@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import ArticleBanner from "../../assets/img/article/article-banner.png";
 import { GetAllArticle } from "../../../services/article/get-article.service";
-import SEO from "../../common/SEO";
 import Image from "next/image";
 
 interface IndexProps {
@@ -26,11 +25,7 @@ const Article: React.FC<IndexProps> = () => {
 
   return (
     <section>
-      <SEO
-        description="Explore our comprehensive patent drawing resources. Learn about requirements, guidelines, tools, and best practices from PatDraw experts to perfect your patent illustrations."
-        keywords="Patent Drawings Blog, Patent Drawings Knowledge Resources "
-        title="Blog and Knowledge Help Resources for Patent Drawings"
-      />
+    
       <section>
         <div className="h-[40vh] w-full relative">
           <Image

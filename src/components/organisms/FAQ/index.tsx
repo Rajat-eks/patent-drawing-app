@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
-import SEO from "../../common/SEO";
 
 interface FAQ {
   ques?: string;
@@ -99,11 +98,7 @@ const FAQ = () => {
 
   return (
     <div>
-      <SEO
-        description="Find answers to your frequently asked questions regarding mediatory processes, ensuring clarity and understanding for a smoother resolution experience."
-        keywords="FAQs, Frequently Asked Questions"
-        title="Frequently Asked Questions| PatDraw"
-      />
+  
       <div className="bg-[#F2F4FF] ">
         <section className="max-w-5xl mx-auto py-4 sm:py-6">
           <div className="flex items-center justify-center flex-col gap-y-2 py-5">

@@ -13,7 +13,6 @@ import Ram from "../../../assets/img/founders/ram-tenneti-n.png";
 import Nishant from "../../../assets/img/founders/nishant-singh-n.png";
 import Gerhard from "../../../assets/img/founders/gerhard-horsch-n.png";
 import Rakesh from "../../../assets/img/founders/rakesh-pandey-n.png";
-import SEO from "../../../common/SEO";
 import Image from "next/image";
 
 interface IndexProps {
@@ -78,11 +77,7 @@ const leadershipTeam: any = [
 const LeadershipTeam: React.FC<IndexProps> = (props) => {
   return (
     <main>
-      <SEO
-        description="Our team is empowered by highly experienced individuals from the Technology, Management and Legal fraternities."
-        keywords="Our Team, Leadership Team"
-        title="Leadership Team | PatDraw"
-      />
+  
       <div className="flex flex-col gap-1">
         <h1 className="  text-2xl font-semibold text-blue font-poppins ">
           Leadership Team

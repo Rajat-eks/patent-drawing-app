@@ -1,5 +1,4 @@
 import React from "react";
-import SEO from "../../common/SEO";
 
 interface PageProps {
   // define props here
@@ -8,11 +7,7 @@ interface PageProps {
 const TermsCondition: React.FC<PageProps> = (props) => {
   return (
     <main className="bg-gradient-to-tr from-[#FBF3E8] to-[#D5E1E2] via-[#F0EFFB] p-4  md:py-10 md:px-60 ">
-      <SEO
-        description="Review PatDraw's comprehensive Terms & Conditions for PatDraw, outlining user agreements, intellectual property, and governing law for a clear understanding of site usage."
-        keywords="Terms & Conditions"
-        title="FAQs, Frequently Asked Questions"
-      />
+  
       <div className="container mx-auto p-8  bg-white shadow-xl rounded-lg">
         <h1 className="text-3xl font-bold mb-2 text-center">
           Terms & Condition

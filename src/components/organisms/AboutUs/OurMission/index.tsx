@@ -2,7 +2,6 @@ import React from "react";
 import VISION from "../../../assets/icons/vision.png";
 import MISSION from "../../../assets/icons/mission.png";
 import VALUE from "../../../assets/img/value.jpg";
-import SEO from "../../../common/SEO";
 import Image from "next/image";
 
 interface IndexProps {
@@ -12,11 +11,7 @@ interface IndexProps {
 const OurMission: React.FC<IndexProps> = (props) => {
   return (
     <main className="flex flex-col gap-8">
-      <SEO
-        description="Our goal is to offer top-notch services to individuals that consider and strive to incorporate innovation into their line of work. "
-        keywords="Mission & Vision"
-        title="Mission & Vision | PatDraw"
-      />
+ 
       <div className="flex flex-col gap-1">
         <h1 className="  text-2xl font-semibold text-blue font-poppins ">
           Mission & Vision

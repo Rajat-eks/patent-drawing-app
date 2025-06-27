@@ -4,7 +4,6 @@ import Inquiry from "./Inquiry";
 import Interested from "./Interested";
 import ArticleBanner from "../../../assets/img/article/article-banner.png";
 import { GetArticleBySlug } from "../../../../services/article/get-article-by-slug.service";
-import SEO from "../../../common/SEO";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 
@@ -25,11 +24,7 @@ const ArticleContent = () => {
 
   return (
     <main className="min-h-[100vh]">
-      <SEO
-        description={article?.metaDescription}
-        keywords={article?.metaKeyword}
-        title={article?.metaTitle}
-      />
+    
       <section className="h-[40vh] w-full">
         <div className="relative h-full w-full">
           <Image

@@ -6,7 +6,6 @@ import CartSample from "../../common/CartSample";
 import { SERVICE_INTERFACE, serviceData } from "../../../data/servicesDetails";
 import toast from "react-hot-toast";
 import GetInTouch from "../GetInTouch";
-import SEO from "../../common/SEO";
 import Contact from "./Contact";
 import Reviews from "../NewHome/Reviews";
 import FAQ from "./FAQ";
@@ -66,11 +65,7 @@ const Product: React.FC<ProductProps> = (props) => {
 
   return (
     <main className=" p-4 md:p-10">
-      <SEO
-        description={service?.seo.description || ""}
-        keywords={service?.seo.keywords || ""}
-        title={service?.seo.title || ""}
-      />
+   
       <section className="flex flex-col md:flex-row justify-around  gap-10 md:gap-20">
         <section className=" w-full md:w-[40%] ">
           <CartSample samples={service?.samples || []} />

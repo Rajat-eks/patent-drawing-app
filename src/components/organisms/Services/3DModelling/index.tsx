@@ -16,7 +16,6 @@ import Sample14 from "../../../assets/img/sample/design-sample-4.jpg";
 import Sample15 from "../../../assets/img/sample/design-sample-5.jpg";
 import DummyImage from "../../../common/DummyImage";
 import Dmodeling from "../../../assets/img/home/services/3d modeling___s1__FINAL.png";
-import SEO from "../../../common/SEO";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -92,11 +91,6 @@ const dummyImage: IDUMMYIMAGE[] = [
 const modeling: React.FC<IndexProps> = (props) => {
   return (
     <main>
-      <SEO
-        description="Experience precise and detailed 3D modeling with our comprehensive 3D modeling services, delivering high-quality visuals for your projects promptly."
-        keywords="3D Modeling, 3D Modeling Services"
-        title="3D Modeling | 3D Modeling Services"
-      />
       <div className="flex flex-col gap-1">
         <h1 className="  text-2xl font-semibold text-blue font-poppins ">
           3D Modeling
@@ -128,20 +122,19 @@ const modeling: React.FC<IndexProps> = (props) => {
             the whole interior space layout and flow.
           </p>
         </div>
-   
+
         <div className="md:w-[35%]">
           <Image src={Dmodeling} alt="UtilityImage" />
         </div>
-
       </section>
       <div className="flex flex-col items-center justify-center md:flex-row gap-4 my-4">
-          <Link
-            href="/product/3d-modeling-drawings"
-            className="bg-red text-white p-3 rounded  text-[15px] flex items-center gap-1 py-2"
-          >
-            Order Your Accurate 3D modelling Drawings Now
-          </Link>
-        </div>
+        <Link
+          href="/product/3d-modeling-drawings"
+          className="bg-red text-white p-3 rounded  text-[15px] flex items-center gap-1 py-2"
+        >
+          Order Your Accurate 3D modelling Drawings Now
+        </Link>
+      </div>
     </main>
   );
 };

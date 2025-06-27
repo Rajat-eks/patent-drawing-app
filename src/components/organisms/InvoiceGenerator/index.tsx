@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect, useRef, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -7,7 +7,6 @@ import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { CreateOrderPaypal } from "../../../services/paypal/createOrder.service";
 import { onApproveOrder } from "../../../services/paypal/approveOrder.service";
 import useFetch from "@rajatv7865/usefetch";
-import SEO from "../../common/SEO";
 
 const InvoiceGenerator: React.FC = () => {
   // const { error, loading, data, refatch } = useFetch();
@@ -107,11 +106,6 @@ const InvoiceGenerator: React.FC = () => {
   };
   return (
     <div className="max-w-md md:mx-auto my-10 mx-6">
-      <SEO
-        description="Securely pay invoices with PatDraw's streamlined online system, ensuring quick and efficient transactions for your drawing needs."
-        keywords="Pay Invoice, Make a Payment"
-        title="Pay Invoice |PatDraw"
-      />
       <h1 className="text-2xl font-bold mb-5">Pay Invoice</h1>
       <form onSubmit={formik.handleSubmit} className="space-y-4 mb-2">
         <div>

@@ -14,7 +14,6 @@ import Sample8 from "../../../assets/img/Samples/Design Drawings/DD8.jpg";
 import Sample9 from "../../../assets/img/Samples/Design Drawings/DD9.jpg";
 import Sample10 from "../../../assets/img/Samples/Design Drawings/DD10.jpg";
 import Sample11 from "../../../assets/img/Samples/Design Drawings/DD11.jpg";
-import SEO from "../../../common/SEO";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -74,11 +73,7 @@ export const dummyImage: IDUMMYIMAGE[] = [
 const DesignPatent: React.FC<IndexProps> = (props) => {
   return (
     <main className="px-2">
-      <SEO
-        description="Get expert design patent drawings with our reliable design patent drawings services, ensuring precision and timely delivery for your innovation."
-        keywords="Design Patent Drawings, Design Patent Drawing Services"
-        title="Design Patent Drawings | Design Patent Drawing Services"
-      />
+   
       <div className="flex flex-col gap-1">
         <h1 className="  text-2xl font-semibold text-blue font-poppins ">
           Design Patent Drawings

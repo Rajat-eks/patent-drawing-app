@@ -15,7 +15,6 @@ import CheckoutDetails from "../CheckoutDetails";
 import Loader from "../../common/Loader";
 import { RequestInvoice } from "../../../services/product";
 import GetInTouch from "../GetInTouch";
-import SEO from "../../common/SEO";
 import Image from "next/image";
 import Link from "next/link";
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
@@ -232,11 +231,6 @@ const Cart: React.FC<IndexProps> = (props) => {
   if (cart.length == 0) {
     return (
       <section className="flex flex-col items-center justify-center p-4 bg-[#E4EDFB] h-screen w-full">
-        <SEO
-          description="Review your cart at PatDraw, complete your order seamlessly, and proceed with your mediatory patent drawing needs efficiently."
-          keywords="Cart, Order Summary"
-          title="Cart | PatDraw"
-        />
         <Image src={EmptyCart} alt="EmptyCart" className="w-[30%]" />
         <h2 className="text-3xl font-semibold text-blue">
           Your cart is empty.

@@ -73,18 +73,6 @@ const patents: PATENTS[] = [
 const ServicesPrice: React.FC<IndexProps> = (props) => {
   return (
     <>
-      <Head>
-        <title>Patent Drawings Services Price- The Patent Drawings</title>
-        <meta
-          name="description"
-          content="The Patent Drawings offering professional patent drawing services at competitive prices. Our Patent Drawings team ensures high-quality, precise designs for all your patent needs."
-        />
-        <meta
-          name="keywords"
-          content="Patent Drawings Services, The Patent Drawings Services, Patent Drawing Services Price, Patent drawings price."
-        />
-        <link rel="canonical" href="https://thepatentdrawings.com/product" />
-      </Head>
       <main className="flex flex-col justify-center items-center  bg-gradient-to-r from-[#EFF2FA]  via-[#E0ECFA] to-[#F1F1F3]">
         <Heading name="OUR SERVICES" />
         <h4 className="text-[17px]  font-poppins px-4 sm:px-10 md:px-20 text-center text-black py-3">

@@ -7,7 +7,6 @@ import { ContactWithUs } from "../../../services/contact";
 import toast from "react-hot-toast";
 import GetInTouch from "../GetInTouch";
 import { FaFacebookF, FaXTwitter } from "react-icons/fa6";
-import SEO from "../../common/SEO";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -67,11 +66,7 @@ const Contact: React.FC<ContactProps> = () => {
 
   return (
     <main className="flex flex-col justify-between ">
-      <SEO
-        description="To schedule time to speak with one of our sales representives, complete the form, then click next to choose a date and time that works for you."
-        keywords="Submit a Request, Contact Us, Free Consultation, Schedule A Meeting"
-        title="Submit a Request | PatDraw"
-      />
+  
       <section className="md:h-[36vh] sm:h-[30vh] h-[20vh]  w-full bg-blue relative">
         <Image
           src={ContactBanner}

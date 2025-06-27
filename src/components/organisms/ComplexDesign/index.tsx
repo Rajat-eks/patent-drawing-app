@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from "react";
 import Banner from "../../assets/img/sampleBanner.png";
-import SEO from "../../common/SEO";
 import ComplexDrawing from "../../assets/img/complex-drawing.png";
 import { ContactWithUs } from "../../../services/contact";
 import Image from "next/image";
@@ -63,12 +62,7 @@ const ComplexDesign: React.FC<IndexProps> = (props) => {
 
   return (
     <main>
-      <SEO
-        description="Download free complex patent drawing samples covering utility & design patents, annotations, and more. Get expert insights now"
-        keywords="Complex Patent Drawing Samples, Complex Utility Patent Drawing Samples, Complex Design Patent Drawing Samples"
-        title="Download Complex Patent Drawing Samples"
-        conanical="https://thepatentdrawings.com/complex-patent-drawing-samples"
-      />
+ 
       <section className="pt-4 ">
         <div className=" w-full h-[40vh] relative">
           <Image

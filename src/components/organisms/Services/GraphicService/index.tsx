@@ -3,7 +3,6 @@ import UtilityImage from "../../../assets/img/services/utility_patent.jpg";
 import UtilityImage2 from "../../../assets/img/services/utility_patent.jpg";
 import DummyImage from "../../../common/DummyImage";
 import GraphicalServiceBanner from "../../../assets/img/home/services/s2_final.png";
-import SEO from "../../../common/SEO";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -51,11 +50,7 @@ const dummyImage: IDUMMYIMAGE[] = [
 const GraphicService: React.FC<IndexProps> = (props) => {
   return (
     <main>
-      <SEO
-        description="Enhance your case with compelling trial graphics through our professional trial graphic services, delivering accurate and impactful visuals for effective courtroom presentations."
-        keywords="Trial Graphics, Trial Graphic Services"
-        title="Trial Graphics | Trial Graphic Services"
-      />
+ 
       <div className="flex flex-col gap-1">
         <h1 className="  text-2xl font-semibold text-blue font-poppins ">
           Trial Graphic Services

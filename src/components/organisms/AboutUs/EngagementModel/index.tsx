@@ -2,7 +2,6 @@ import React from "react";
 import model1 from "../../../assets/img/model/Full-Time.png";
 import model2 from "../../../assets/img/model/ON DEMAND.png";
 import model3 from "../../../assets/img/model/dedicated hour.png";
-import SEO from "../../../common/SEO";
 import Image from "next/image";
 
 interface IndexProps {
@@ -12,11 +11,7 @@ interface IndexProps {
 const index: React.FC<IndexProps> = (props) => {
   return (
     <main className=" flex flex-col   gap-6">
-      <SEO
-        description="We hire and train specialists tailored to client specifications. We manage the team and provide necessary infrastructure."
-        keywords="Our Engagement Models"
-        title="Our Engagement Models | PatDraw"
-      />
+   
       <div className="flex flex-col gap-1">
         <h1 className="  text-2xl font-semibold text-blue font-poppins ">
           Our Engagement Models

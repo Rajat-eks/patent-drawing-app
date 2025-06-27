@@ -1,7 +1,6 @@
 import React from "react";
 import DummyImage from "../../../common/DummyImage";
 import UtilityPatentBanner from "../../../assets/img/home/services/UTILITY PATENT DRAWING_s1final.png";
-import SEO from "../../../common/SEO";
 import FAQ from "../../Product/FAQ";
 
 //IMAGES
@@ -70,11 +69,7 @@ export const dummyImage: IDUMMYIMAGE[] = [
 const UtilityPatent: React.FC<IndexProps> = (props) => {
   return (
     <main className="px-4">
-      <SEO
-        description="PatDraw (Effectual) offers professional, accurate, and timely utility patent drawing services of the highest calibre."
-        keywords="Utility Patent Drawings, Utility Patent Drawing Services"
-        title="Utility Patent Drawings | Utility Patent Drawing Services"
-      />
+   
       <div className="flex flex-col gap-1">
         <h1 className="  text-2xl font-semibold text-blue font-poppins ">
           Utility Patent Drawings

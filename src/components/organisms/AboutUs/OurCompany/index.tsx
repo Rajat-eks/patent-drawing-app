@@ -1,6 +1,5 @@
 import React from "react";
 import ComapanyImage from "../../../assets/logo/logo.jpg";
-import SEO from "../../../common/SEO";
 import Image from "next/image";
 
 interface IndexProps {
@@ -10,12 +9,7 @@ interface IndexProps {
 const OurCompany: React.FC<IndexProps> = (props) => {
   return (
     <>
-      <SEO
-        description="With over two decades of experience, the Patent Drawings team has completed thousands of utility and design drawings for a wide range of clients worldwide."
-        keywords="Our Company, About Us, Who we are"
-        title="About Us | PatDraw"
-        conanical="our-company"
-      />
+
       <main>
         <div className="flex flex-col gap-1">
           <h1 className="  text-2xl font-semibold text-blue font-poppins ">

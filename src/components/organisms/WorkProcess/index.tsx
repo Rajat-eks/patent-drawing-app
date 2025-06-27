@@ -8,7 +8,6 @@ import Heading from "../../molecules/Heading";
 import Testimonial from "../Home/Testimonial";
 import OurServices from "../Home/OurServices";
 import GetInTouch from "../GetInTouch";
-import SEO from "../../common/SEO";
 import Image from 'next/image';
 
 interface IndexProps {
@@ -50,11 +49,7 @@ const WorkProcess: React.FC<IndexProps> = (props) => {
   ];
   return (
     <>
-      <SEO
-        description="Our services are specially curated & designed to support patent agents & patent attorneys"
-        keywords="Our Work Process, How it Works"
-        title="Our Work Process | PatDraw"
-      />
+  
       <main className="flex flex-col items-center ">
         <div className="flex flex-col items-center gap-0">
           <Heading name="OUR WORK PROCESS" />

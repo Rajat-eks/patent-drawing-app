@@ -17,7 +17,6 @@ import Award16 from "../../../assets/img/awards/client-logo8.png";
 import Award17 from "../../../assets/img/awards/client-logo9.png";
 import Award18 from "../../../assets/img/awards/globaFootprint.png";
 import Award19 from "../../../assets/img/awards/iacc.png";
-import SEO from "../../../common/SEO";
 import Image from "next/image";
 
 interface AwardsProps {
@@ -27,11 +26,7 @@ interface AwardsProps {
 const Awards: React.FC<AwardsProps> = (props) => {
   return (
     <main>
-      <SEO
-        description="At our company, we’re proud to showcase the awards and recognitions that highlight our journey of excellence and innovation."
-        keywords="Awards & Recognitions"
-        title="Awards & Recognitions | PatDraw"
-      />
+    
       <div className="flex flex-col gap-1">
         <h1 className="  text-2xl font-semibold text-blue font-poppins ">
           Awards & Recognitions
