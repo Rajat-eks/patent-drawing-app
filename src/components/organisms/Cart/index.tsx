@@ -77,8 +77,6 @@ const Cart: React.FC<IndexProps> = (props) => {
     return calculations;
   }, [cart]);
 
-  console.log("item", item);
-
   const removeItemHandler = (id: number) => {
     dispatch(REMOVEITEM(id));
     toast.success("Item removed Successfully");

@@ -106,7 +106,7 @@ const OrderForm = ({ serviceId, service }: any) => {
   });
   console.log("for", formik.values);
   return (
-    <section className="p-5">
+    <section className="py-5">
       <form onSubmit={formik.handleSubmit} className="grid grid-cols-2 gap-5">
         <Input
           placeholder="First Name"
@@ -193,7 +193,6 @@ const OrderForm = ({ serviceId, service }: any) => {
         <div className="col-span-2">
           <Input
             placeholder="Docket Reference Number"
-            
             {...formik.getFieldProps("docket")}
           />
         </div>
@@ -283,7 +282,7 @@ const Input = ({ name, placeholder, required, ...props }: any) => (
       required={required}
       // placeholder={placeholder}
       {...props}
-      className="border border-[#083B95] rounded p-[6px] w-full text-gray-700 text-[16px] focus:outline-red"
+      className="border border-[#083B95] rounded p-[6px] w-full text-gray-700 text-[14px] focus:outline-red"
     />
   </div>
 );
@@ -369,7 +368,7 @@ const Select: React.FC<SearchableSelectProps> = ({
 
   return (
     <div ref={wrap} className="relative flex flex-col text-sm text-gray-800">
-      <label className="mb-1">
+      <label className="mb-1 text-[14px]">
         {placeholder}
         {required && <span className="text-red-600 font-bold ml-0.5">*</span>}
       </label>
@@ -430,7 +429,7 @@ const TextArea = ({ name, placeholder, note, required, ...props }: any) => (
       // placeholder={placeholder}
       required={required}
       {...props}
-      className="border border-[#083B95] rounded p-[6px] w-full text-gray-700 text-[16px] focus:outline-red"
+      className="border border-[#083B95] rounded p-[6px] w-full text-gray-700 text-[4px] focus:outline-red"
     />
   </div>
 );

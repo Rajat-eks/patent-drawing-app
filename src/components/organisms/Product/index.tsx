@@ -65,7 +65,6 @@ const Product: React.FC<ProductProps> = (props) => {
 
   return (
     <main className=" p-4 md:p-10">
-   
       <section className="flex flex-col md:flex-row justify-around  gap-10 md:gap-20">
         <section className=" w-full md:w-[40%] ">
           <CartSample samples={service?.samples || []} />
@@ -100,11 +99,11 @@ const Product: React.FC<ProductProps> = (props) => {
           {service?.price !== 0 ? (
             <section>
               <div>
-                <h5 className="pt-4 mt-5 font-semibold border-t-[1px] border-blue text-[16px]">
+                <h5 className="pt-4 mt-5 font-semibold border-t-[1px] border-blue text-[19px]">
                   {" "}
                   Submit your information to start your order/project
                 </h5>
-                <ul className=" p-2">
+                <ul className=" pt-2">
                   <li className="text-[13px] ">
                     <Link
                       href={"/non-disclosure-agreement"}
