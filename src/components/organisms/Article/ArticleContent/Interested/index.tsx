@@ -8,7 +8,7 @@ interface IndexProps {
 }
 
 const Interested: React.FC<IndexProps> = (props) => {
-  const [articles, setAticles] = useState<any>([]);
+  const [articles, setAticles] = useState<{articleSlug: string, articleHeading: string, articleDate: string}[]>([]);
 
   useEffect(() => {
     (async () => {
@@ -30,7 +30,7 @@ const Interested: React.FC<IndexProps> = (props) => {
         <hr />
 
         <ul className="p-2 flex flex-col space-y-2">
-          {articles?.map((article: any,index:number) => (
+          {articles?.map((article: {articleSlug: string, articleHeading: string, articleDate: string},index:number) => (
             <Link key={index} href={`/blog/${article.articleSlug}`}>
               <li className="flex flex-col  bg-white p-3 space-y-1">
                 <p className="text-[15px]">{article?.articleHeading}</p>

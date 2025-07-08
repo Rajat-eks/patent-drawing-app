@@ -9,15 +9,14 @@ interface IFAQ {
 }
 
 const FAQ = ({ serviceName }: any) => {
-  const [isOpen, setIsOpen] = useState({ status: false, id: null });
-  const [FAQs, setFaq] = useState<any>([]);
+  const [isOpen, setIsOpen] = useState<{ status: boolean; id: string | number | null }>({ status: false, id: null });
+  const [FAQs, setFaq] = useState<{ [key: string]: any }[]>([]);
 
   useEffect(() => {
-    console.log("first",faqData?.filter((item) => item.service == serviceName))
     setFaq(faqData?.filter((item) => item.service == serviceName));
   }, [serviceName]);
 
-  const handleOpenFAQ = (index: any) => {
+  const handleOpenFAQ = (index: string | number) => {
     if (index == isOpen.id) {
       setIsOpen({ status: false, id: null });
     } else {

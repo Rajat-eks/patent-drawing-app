@@ -8,7 +8,6 @@ const PaypalButton = ({ totalAmount }: any) => {
 
   // Create order (calls backend)
   const generateOrder = async () => {
-    console.log("is generate order call");
     // try {
     //   // const response = await CreateOrderPaypal({ amount: totalAmount }); // Adjust amount as needed
     //   const { id } = response.data;

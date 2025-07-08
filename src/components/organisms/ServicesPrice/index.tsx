@@ -9,14 +9,15 @@ import PricingCard from "./PricingCard";
 import Heading from "../../molecules/Heading";
 import Card from "../Home/OurServices/Card";
 import Head from "next/head";
+import { StaticImageData } from "next/image";
 
 interface IndexProps {
   // define props here
 }
 
 interface PATENTS {
-  image?: any;
-  name?: string;
+  image: StaticImageData;
+  name: string;
   content?: string;
   link: string;
   order_url: string;

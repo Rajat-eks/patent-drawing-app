@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   RxArrowUp,
@@ -44,8 +44,8 @@ const Footer: React.FC<IndexProps> = () => {
     message: "Subscriber Request",
   });
 
-  //On Chnage Handler
-  const onChangeHandler = (e: any) => {
+  //On Change Handler
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     setUserDetails({
       ...userDetails,

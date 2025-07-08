@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import Banner from "../../assets/img/ultimate-guide.jpg";
 import ComplexDrawing from "../../assets/img/ultimate-guidebook.png";
 import {  RequestForUltimateSheet } from "../../../services/contact/connectForSheet";
@@ -26,8 +26,8 @@ const UltimateGuide: React.FC<IndexProps> = (props) => {
     message: "",
   });
 
-  //On Chnage Handler
-  const onChangeHandler = (e: any) => {
+  //On Change Handler
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     setUserDetails({
       ...userDetails,
@@ -36,7 +36,7 @@ const UltimateGuide: React.FC<IndexProps> = (props) => {
   };
 
   //Send a Query
-  const submitHandler = async (e: any) => {
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
       const payload = {

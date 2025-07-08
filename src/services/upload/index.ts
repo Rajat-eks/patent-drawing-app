@@ -21,8 +21,8 @@ export const uploadFile = async (files: File[] | []) => {
     if (response.status === 200) {
       return response.data; // Handle successful response
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error uploading files:", error);
-    throw new Error(error?.response?.data?.message || "File upload failed"); // More specific error messages
+    throw new Error("File upload failed"); // More specific error messages
   }
 };

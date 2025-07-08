@@ -1,6 +1,6 @@
 import axiosObject from "../config.service";
 
-export const RequestInvoice = async (payload: any) => {
+export const RequestInvoice = async (payload: unknown) => {
   try {
     const uri: string = "order/requestInvoice";
     const response = await axiosObject.post(uri, payload);

@@ -4,7 +4,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 interface IndexProps {
-  children?: any;
+  children?: React.ReactNode;
   items: number;
   dots?: boolean;
   arrows?: boolean;

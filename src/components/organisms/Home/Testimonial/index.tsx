@@ -6,6 +6,7 @@ import User from "../../../assets/img/home/user.png";
 import { ImQuotesLeft } from "react-icons/im";
 import { RiDoubleQuotesR } from "react-icons/ri";
 import Heading from "../../../molecules/Heading";
+import { StaticImageData } from "next/image";
 
 interface TestimonialProps {
   // define props here
@@ -16,7 +17,7 @@ interface TESTIMONIAL {
   designation?: string;
   star?: number;
   message?: string;
-  avatar?: any;
+  avatar?: StaticImageData;
 }
 
 const testimonial: TESTIMONIAL[] = [

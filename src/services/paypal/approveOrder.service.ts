@@ -1,6 +1,6 @@
 import axiosObject from "../config.service";
 
-export const onApproveOrder = async (payload: any) => {
+export const onApproveOrder = async (payload: unknown) => {
   try {
     const uri: string = "order/onApprove-paypal";
     const response = await axiosObject.post(uri, payload);

@@ -5,7 +5,7 @@ import ObjectPatent from "../../../assets/img/home/services/object patent drawin
 //IMAGE
 import Sample1 from "../../../assets/img/Samples/Objected Patent Drawings/OPT1.jpg";
 import Sample2 from "../../../assets/img/Samples/Objected Patent Drawings/OPT2.jpg";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 interface IndexProps {
@@ -13,8 +13,8 @@ interface IndexProps {
 }
 
 export interface IDUMMYIMAGE {
-  title: any;
-  image: any;
+  title: string;
+  image: StaticImageData;
 }
 const dummyImage: IDUMMYIMAGE[] = [
   {

@@ -3,28 +3,24 @@ import React, { useEffect, useState } from "react";
 import Inquiry from "./Inquiry";
 import Interested from "./Interested";
 import ArticleBanner from "../../../assets/img/article/article-banner.png";
-import { GetArticleBySlug } from "../../../../services/article/get-article-by-slug.service";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 
-const ArticleContent = () => {
-  const { slug }: any = useParams();
-  const [article, setArticle] = useState<any>();
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await GetArticleBySlug(slug);
-        setArticle(response?.data);
-      } catch (error) {
-        throw new Error("Error when fetching article");
-      }
-    })();
-  }, [slug]);
+const ArticleContent = ({ data }:any) => {
+  const { slug }: { slug: string } = useParams();
+  const [article, setArticle] = useState<{
+    id: number;
+    title: string;
+    content: string;
+    metaTitle: string;
+    articleHeading: string;
+    articleDate: string;
+    filePath: string;
+    html: TrustedHTML;
+  }>(data);
 
   return (
     <main className="min-h-[100vh]">
-    
       <section className="h-[40vh] w-full">
         <div className="relative h-full w-full">
           <Image
@@ -61,7 +57,7 @@ const ArticleContent = () => {
             <p
               className="text-[13px] text-justify pt-2 w-full"
               dangerouslySetInnerHTML={{
-                __html: article?.html,
+                __html: article?.html ?? "",
               }}
             ></p>
           </section>

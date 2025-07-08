@@ -14,15 +14,15 @@ import Sample8 from "../../../assets/img/Samples/Design Drawings/DD8.jpg";
 import Sample9 from "../../../assets/img/Samples/Design Drawings/DD9.jpg";
 import Sample10 from "../../../assets/img/Samples/Design Drawings/DD10.jpg";
 import Sample11 from "../../../assets/img/Samples/Design Drawings/DD11.jpg";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 interface IndexProps {
   // define props here
 }
 export interface IDUMMYIMAGE {
-  title: any;
-  image: any;
+  title: string;
+  image: StaticImageData;
 }
 export const dummyImage: IDUMMYIMAGE[] = [
   {

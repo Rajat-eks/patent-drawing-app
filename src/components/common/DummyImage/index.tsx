@@ -1,5 +1,5 @@
-'use client'
-import React, {  useState } from "react";
+"use client";
+import React, { useState } from "react";
 import { IDUMMYIMAGE } from "../../organisms/Services/UtilityPatent";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
@@ -7,7 +7,6 @@ import { GoEye } from "react-icons/go";
 import { BsCart2 } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
-
 
 interface IndexProps {
   data: IDUMMYIMAGE[];
@@ -38,8 +37,8 @@ const index: React.FC<IndexProps> = ({ data, link }) => {
     setIsShow(true);
   };
 
-  const closeHandle = (e: any) => {
-    if (e.target.id === "closeWrapper") {
+  const closeHandle = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.currentTarget.id === "closeWrapper") {
       setIsShow(false);
     }
   };

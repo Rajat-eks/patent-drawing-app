@@ -13,6 +13,7 @@ import TrademarkDrawing2 from "../components/assets/img/Samples/Trademark Design
 import Other1 from "../components/assets/img/Samples/other/3DModelling.png";
 import Other2 from "../components/assets/img/Samples/other/Chemical Structure.png";
 import Other3 from "../components/assets/img/Samples/other/Trial Graphics.png";
+import { StaticImageData } from "next/image";
 
 export interface SERVICE_INTERFACE {
   id: string;
@@ -21,7 +22,7 @@ export interface SERVICE_INTERFACE {
   details: string;
   price: number;
   strikePrice: number;
-  samples: any[];
+  samples: StaticImageData[];
   seo: {
     title: string;
     description: string;

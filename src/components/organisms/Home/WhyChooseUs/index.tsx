@@ -13,14 +13,14 @@ import Proficiency from "../../../assets/img/home/services-icon/proficiency in s
 import Quality from "../../../assets/img/home/services-icon/quality control.png";
 import Biggest from "../../../assets/img/home/services-icon/we have one of the biggest.png";
 import Heading from "../../../molecules/Heading";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface WhoWeAreProps {
   // define props here
 }
 
 interface CHOOSEUS {
-  icon?: any;
+  icon: StaticImageData;
   heading?: string;
   content?: string;
 }
@@ -112,7 +112,7 @@ const WhyChooseUs: React.FC<WhoWeAreProps> = (props) => {
           <section className="w-full my-6 grid   gap-12 sm:gap-6 md:gap-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-2 md:gap-6 space-y-5 md:space-y-1 ">
               {chooseUs?.map(
-                ({ icon, heading, content }: CHOOSEUS, index: any) => {
+                ({ icon, heading, content }: CHOOSEUS, index: number) => {
                   return (
                     <div
                       className=" shadow-md border-gray-300 bg-white p-2 rounded-lg  flex flex-col items-center justify-center  group hover:bg-blue hover:text-white hover:border-0 group relative"

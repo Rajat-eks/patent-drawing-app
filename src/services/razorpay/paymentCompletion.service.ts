@@ -1,6 +1,6 @@
 import axiosObject from "../config.service";
 
-export const PaymentCompletionViaRazorpay = async (payload: any) => {
+export const PaymentCompletionViaRazorpay = async (payload: unknown) => {
   try {
     const uri: string = "order/payment-razorpay";
     const response = await axiosObject.post(uri, payload);

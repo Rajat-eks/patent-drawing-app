@@ -11,8 +11,6 @@ import {
 import EmptyCart from "../../assets/img/empty-cart.png";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import toast from "react-hot-toast";
-import CheckoutDetails from "../CheckoutDetails";
-import Loader from "../../common/Loader";
 import { RequestInvoice } from "../../../services/product";
 import GetInTouch from "../GetInTouch";
 import Image from "next/image";
@@ -28,16 +26,21 @@ interface IndexProps {
   // define props here
 }
 
-const Cart: React.FC<IndexProps> = (props) => {
+const Cart: React.FC<IndexProps> = () => {
   const navigate = useRouter();
-  const { item } = useSelector((state: any) => state.cart);
-  const [cart, setCart] = useState<any>([]);
+  const { item } = useSelector(
+    (state: { cart: { item: { [key: string]: any }[] } }) => state.cart
+  );
+  const [cart, setCart] = useState<{ [key: string]: any }[]>([]);
   const dispatch = useDispatch();
   const [isCheckout, setIsCheckout] = useState<boolean>(false);
   const [buttonType, setButtonType] = useState<
     "INVOICE" | "RAZORPAY" | "PAYPAL"
   >();
-  const [razorPayValues, setRazorPayValues] = useState<any>();
+  const [razorPayValues, setRazorPayValues] = useState<{
+    orderId: string | null;
+    paymentId: string | null;
+  } | null>(null);
 
   useEffect(() => {
     // Create a Map for item quantities
@@ -47,7 +50,7 @@ const Cart: React.FC<IndexProps> = (props) => {
 
     // Filter and map the common items between serviceData and item
     const commonItemsWithQuantities = serviceData
-      .filter((itemA: any) => quantityMapB.has(itemA.id))
+      .filter((itemA: { id: string }) => quantityMapB.has(itemA.id))
       .map((itemA: any) => {
         const matchedItem = item?.find(
           (items: any) => items.itemId == itemA.id
@@ -91,7 +94,6 @@ const Cart: React.FC<IndexProps> = (props) => {
       const response = await CreateOrderPaypal(totalAmount); // Adjust amount as needed
       const { id } = response.data;
       setOrderID(id);
-      console.log("id in response", response);
       return id;
     } catch (error) {
       console.error("Error creating order:", error);
@@ -105,7 +107,6 @@ const Cart: React.FC<IndexProps> = (props) => {
     }
   };
 
-  console.log("item", item);
   //INVOICE HANDLER
   const invoiceHandler = async () => {
     try {
@@ -139,7 +140,7 @@ const Cart: React.FC<IndexProps> = (props) => {
         toast.success(response.message);
         navigate.push("/thank-you-invoice");
       }
-      dispatch(REMOVEALLITEM(""));
+      dispatch(REMOVEALLITEM());
     } catch (error) {
       throw new Error("Error when Reqest Invoice");
     }

@@ -13,13 +13,18 @@ import Ram from "../../../assets/img/founders/ram-tenneti-n.png";
 import Nishant from "../../../assets/img/founders/nishant-singh-n.png";
 import Gerhard from "../../../assets/img/founders/gerhard-horsch-n.png";
 import Rakesh from "../../../assets/img/founders/rakesh-pandey-n.png";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface IndexProps {
   // define props here
 }
 
-const founders: any = [
+const founders: {
+  name: string;
+  designation: string;
+  linkdin: string;
+  avatar: StaticImageData;  
+}[] = [
   {
     name: "Dr Amit Goel",
     designation: "Director & Co-Founder",
@@ -41,7 +46,12 @@ const founders: any = [
   },
 ];
 
-const leadershipTeam: any = [
+const leadershipTeam: {
+  name: string;
+  designation: string;
+  linkdin: string;
+  avatar: StaticImageData;
+}[] = [
   {
     name: "Ram Tenneti",
     designation: "Vice President",
@@ -102,7 +112,7 @@ const LeadershipTeam: React.FC<IndexProps> = (props) => {
         </span>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 px-8 sm:px-4 md:px-0 py-4">
-          {founders?.map((item: any,index:number) => (
+          {founders?.map((item: { name: string; designation: string; linkdin: string; avatar: StaticImageData; }, index: number) => (
             <div key={index} className="border-2 flex flex-col items-center justify-center p-4 bg-gray-300 rounded-lg shadow-lg">
               <Image src={item?.avatar} alt="amit_goel" loading="lazy" />
               <h2 className="text-xl font-semibold">{item?.name}</h2>
@@ -123,7 +133,7 @@ const LeadershipTeam: React.FC<IndexProps> = (props) => {
           <span className="border-b-4 border-red  w-20 text-center"></span>
         </span>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 px-8 sm:px-4 md:px-0 py-4">
-          {leadershipTeam?.map((item: any,index:number) => (
+          {leadershipTeam?.map((item: { name: string; designation: string; linkdin: string; avatar: StaticImageData; }, index: number) => (
             <div  key={index} className="border-2 flex flex-col items-center justify-center p-4 rounded-lg shadow-lg">
               <Image src={item?.avatar} alt="amit_goel" />
               <h2 className="text-xl font-semibold uppercase">{item?.name}</h2>

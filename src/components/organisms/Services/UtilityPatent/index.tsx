@@ -16,7 +16,7 @@ import Sample9 from "../../../assets/img/Samples/Utility Drawings/UD9.jpg";
 import Reviews from "../../NewHome/Reviews";
 import MultiCarousal from "../../../hoc/MultiCarousal";
 import { BsCheck2 } from "react-icons/bs";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 interface IndexProps {
@@ -24,7 +24,7 @@ interface IndexProps {
 }
 
 export interface IDUMMYIMAGE {
-  title: any;
+  title: string;
   image: any;
 }
 export const dummyImage: IDUMMYIMAGE[] = [

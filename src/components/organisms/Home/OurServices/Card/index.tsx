@@ -1,14 +1,14 @@
 import React from "react";
 import { GrCertificate, MdArrowForwardIos } from "../../../../assets/icons";
 import { BsCart2 } from "react-icons/bs";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 interface IndexProps {
-  image?: any;
+  image: StaticImageData;
   icon?: string;
   content?: string;
-  name?: any;
+  name: string;
   link: string;
   order_url: string;
   index: number;

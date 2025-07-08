@@ -1,5 +1,5 @@
 'use client'
-import React, { memo, useState } from "react";
+import React, { memo, ReactElement, useState } from "react";
 import { ContactWithUs } from "../../../../../services/contact";
 import { useRouter } from "next/navigation";
 
@@ -23,8 +23,8 @@ const Inquiry: React.FC<IndexProps> = (props) => {
     message: "",
   });
 
-  //On Chnage Handler
-  const onChangeHandler = (e: any) => {
+  //On Change Handler
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { value, name } = e.target;
     setUserDetails({
       ...userDetails,
@@ -33,7 +33,7 @@ const Inquiry: React.FC<IndexProps> = (props) => {
   };
 
   //Send a Query
-  const submitHandler = async (e: any) => {
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
       const payload = {

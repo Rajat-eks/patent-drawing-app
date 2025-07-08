@@ -8,14 +8,18 @@ import Heading from "../../molecules/Heading";
 import Testimonial from "../Home/Testimonial";
 import OurServices from "../Home/OurServices";
 import GetInTouch from "../GetInTouch";
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 interface IndexProps {
   // define props here
 }
 
 const WorkProcess: React.FC<IndexProps> = (props) => {
-  const process: any = [
+  const process: {
+    Image: StaticImageData;
+    heading: string;
+    content: string;
+  }[] = [
     {
       Image: Process2,
       heading: "KEY IN REQUESTED FIELDS OF INFORMATION & UPLOAD YOUR FILES",
@@ -59,7 +63,7 @@ const WorkProcess: React.FC<IndexProps> = (props) => {
           </h1>
         </div>
         <section className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-5 p-14 items-center justify-center">
-          {process?.map(({ Image:image, heading, content }: any, index: number) => {
+          {process?.map(({ Image:image, heading, content }: {Image: StaticImageData; heading: string; content: string;}, index: number) => {
             return (
               <div key={index} className="flex items-center gap-10">
                 <div className="flex flex-col gap-1 w-52">

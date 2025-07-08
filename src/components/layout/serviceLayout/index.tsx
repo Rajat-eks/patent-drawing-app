@@ -11,7 +11,10 @@ const ServiceLayout: React.FC<DashboardRoutesProps> = ({ children }) => {
     path: string;
   }
 
-  const links: any = [
+  const links: {
+    name: string;
+    path: string;
+  }[] = [
     {
       name: "Utility Patent Drawings",
       path: "/services/utility-patent-drawings",

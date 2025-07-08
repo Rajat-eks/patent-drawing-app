@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import { submitQuery } from "../../services/query";
 // import toast from "react-hot-toast";
 
-const SignUp = ({ isClose }: any) => {
+const SignUp = ({ isClose }: { isClose: (value: boolean) => void }) => {
   //   const [isOpen, setIsOpen] = useState(false);
   //   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState({
@@ -12,7 +12,9 @@ const SignUp = ({ isClose }: any) => {
     message: "",
   });
 
-  const changeHandler = (e: any) => {
+  const changeHandler = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setData((prevData) => ({
       ...prevData,
@@ -20,13 +22,16 @@ const SignUp = ({ isClose }: any) => {
     }));
   };
 
-  const closeHandle = (e: any) => {
-    if (e.target.id === "closeWrapper") {
-      isClose((prev: any) => false);
+  const closeHandle = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.currentTarget.id === "closeWrapper") {
+      isClose(false);
     }
   };
 
-  const submitHandler = async (e: any) => {};
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Handle form submission
+  };
   return (
     <div className=" absolute z-[100] top-0 left-0  ">
       <div
@@ -38,7 +43,7 @@ const SignUp = ({ isClose }: any) => {
           <div className="flex flex-col justify-center items-center mx-8 md:mx-0 rounded-2xl shadow-lg transform  translate-x-3 py-5 md:py-8  bg-[#F1F1F3] w-[40%]">
             <span
               id="closeWrapper"
-              onClick={(e) => closeHandle(e)}
+              onClick={(e: React.MouseEvent<HTMLDivElement>) => closeHandle(e)}
               className="z-10 absolute top-2 right-4 cursor-pointer"
             >
               X
@@ -108,7 +113,7 @@ const SignUp = ({ isClose }: any) => {
             <span>
               Have an account?{" "}
               <button
-                onClick={() => isClose((prev: any) => false)}
+                onClick={() => isClose(false)}
                 className="hpover:border-b-[1px] cursor-pointer text-blue text-sm"
               >
                 SignIn

@@ -38,7 +38,6 @@ export const cartSlice = createSlice({
   reducers: {
     ADDITEM: (state, action) => {
       const { itemId, quantity } = action.payload;
-      console.log("action payload", action.payload);
 
       const isExist = state.item?.find(
         (item: ICART) => item?.itemId === itemId
@@ -51,15 +50,12 @@ export const cartSlice = createSlice({
     },
 
     REMOVEITEM: (state, action) => {
-      console.log(action.payload); // Logs the id
       state.item = state.item.filter((item) => item.itemId !== action.payload); // Update the state with filtered items
-      console.log(state.item);
     },
 
-    REMOVEALLITEM: (state, _) => {
+    REMOVEALLITEM: (state) => {
      
       state.item = []; // Update the state with filtered items
-      console.log(state.item);
     },
 
     ADDQUANTITY: (state, action) => {

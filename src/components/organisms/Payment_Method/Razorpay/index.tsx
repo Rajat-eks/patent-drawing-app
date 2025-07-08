@@ -64,7 +64,6 @@ const RazorpayButton = ({
 
   // Handler to open Razorpay Checkout
   const handlePayment = async (e: any) => {
-    console.log("clicked", register);
     e.preventDefault();
     const orderResponse = await CreateOrder(amount); // GENERATE ID FROM SERVER
     setButtonType("RAZORPAY");

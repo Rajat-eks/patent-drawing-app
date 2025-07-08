@@ -16,7 +16,12 @@ interface LINKS {
   path: string;
 }
 
-const PageLayout: React.FC<any> = ({ links, pageName, children, height }) => {
+const PageLayout: React.FC<{
+  links: LINKS[];
+  pageName: string;
+  children: React.ReactNode;
+  height?: string | number;
+}> = ({ links, pageName, children, height }) => {
   const [isExpand, setIsExpand] = useState<boolean>(true);
   const [isMobileView, setIsMobileView] = useState<boolean>(
     window.innerWidth >= 768 ? true : false
@@ -24,9 +29,9 @@ const PageLayout: React.FC<any> = ({ links, pageName, children, height }) => {
   //   const location = RiUserLocationFill();
 
   // Throttle function
-  function throttle(func: (...args: any[]) => void, limit: number) {
+  function throttle(func: (...args: unknown[]) => void, limit: number) {
     let inThrottle: boolean;
-    return function (...args: any[]) {
+    return function (...args: unknown[]) {
       if (!inThrottle) {
         func(...args);
         inThrottle = true;

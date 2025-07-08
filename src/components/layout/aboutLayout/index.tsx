@@ -4,7 +4,10 @@ import PageLayout from "../pageLayout";
 interface DashboardRoutesProps {
   children: ReactNode;
 }
-const links: any = [
+const links: {
+  name: string;
+  path: string;
+}[] = [
   {
     name: "Our Company",
     path: "/our-company",

@@ -95,10 +95,8 @@ const InvoiceGenerator: React.FC = () => {
         return;
       }
       const response = await CreateOrderPaypal(amount); // Adjust amount as needed
-      console.log("id", response.data);
       const { id } = response.data;
       setOrderID(id);
-      console.log("id in response", response);
       return id;
     } catch (error) {
       console.error("Error creating order:", error);

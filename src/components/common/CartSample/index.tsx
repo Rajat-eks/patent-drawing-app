@@ -1,19 +1,19 @@
 'use client'
 import React, { memo, useEffect, useState } from "react";
 import { useParams } from 'next/navigation';
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface IndexProps {
   // define props here
-  samples: string[];
+  samples: StaticImageData[];
 }
 
 const CartSample: React.FC<IndexProps> = ({ samples }) => {
-  const [selectedImage, setSelectedImage] = useState<string>(samples[0]);
+  const [selectedImage, setSelectedImage] = useState<StaticImageData>(samples[0]);
   const { serviceId } = useParams();
 
   useEffect(() => {
-    setSelectedImage('');
+    setSelectedImage(samples[0]);
   }, [serviceId]);
 
   return (
@@ -28,7 +28,7 @@ const CartSample: React.FC<IndexProps> = ({ samples }) => {
         </div>
 
         <div className="grid grid-cols-5 gap-4">
-          {samples?.map((item: string, index: number) => {
+          {samples?.map((item: StaticImageData, index: number) => {
             return (
               <div key={index} onClick={() => setSelectedImage(item)}>
                 <Image

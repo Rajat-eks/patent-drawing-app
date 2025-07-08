@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import Banner from "../../assets/img/sampleBanner.png";
 import ComplexDrawing from "../../assets/img/complex-drawing.png";
 import { ContactWithUs } from "../../../services/contact";
@@ -26,8 +26,8 @@ const ComplexDesign: React.FC<IndexProps> = (props) => {
     message: "",
   });
 
-  //On Chnage Handler
-  const onChangeHandler = (e: any) => {
+  //On Change Handler
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     setUserDetails({
       ...userDetails,
@@ -36,7 +36,7 @@ const ComplexDesign: React.FC<IndexProps> = (props) => {
   };
 
   //Send a Query
-  const submitHandler = async (e: any) => {
+  const submitHandler = async (e: ChangeEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
       const payload = {

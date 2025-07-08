@@ -1,6 +1,6 @@
 import axiosObject from "../config.service";
 
-export const RequestForSheet = async (payload: any) => {
+export const RequestForSheet = async (payload: unknown) => {
   try {
     const uri: string = "contact/sheet-sizes";
     const response = await axiosObject.post(uri, payload);
@@ -11,7 +11,7 @@ export const RequestForSheet = async (payload: any) => {
     return Promise.reject(error);
   }
 };
-export const RequestForUltimateSheet = async (payload: any) => {
+export const RequestForUltimateSheet = async (payload: unknown) => {
   try {
     const uri: string = "contact/ultimate-sheet-sizes";
     const response = await axiosObject.post(uri, payload);
@@ -23,7 +23,7 @@ export const RequestForUltimateSheet = async (payload: any) => {
   }
 };
 
-export const RequestForMastering = async (payload: any) => {
+export const RequestForMastering = async (payload: unknown) => {
   try {
     const uri: string = "contact/master-line-quality";
     const response = await axiosObject.post(uri, payload);

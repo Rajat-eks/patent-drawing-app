@@ -11,8 +11,8 @@ import * as Yup from "yup";
 // import Register from "./Register";
 
 interface IndexProps {
-  setIsCheckout?: any;
-  cart?: any;
+  setIsCheckout: (value: boolean) => void;
+  cart: [any];
   totalAmount: number;
 }
 
@@ -75,7 +75,7 @@ const CheckoutDetails: React.FC<IndexProps> = ({
           orderAmount: totalAmount,
           deliveryAmount: 0,
           cart: [
-            ...cart?.map((item: any) => {
+            ...cart.map((item: any) => {
               return {
                 name: item?.name,
                 quantity: item?.quantity,
@@ -90,7 +90,6 @@ const CheckoutDetails: React.FC<IndexProps> = ({
       };
       const response = await RequestInvoice(payload);
       if (response?.status == true) toast.success(response.message);
-      console.log(response);
     } catch (error) {
       throw new Error("Error when Request Invoice");
     } finally {

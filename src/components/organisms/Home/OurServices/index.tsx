@@ -8,15 +8,16 @@ import Service6 from "../../../assets/img/home/services/object patent drawings_s
 
 import Card from "./Card";
 import Heading from "../../../molecules/Heading";
+import { StaticImageData } from "next/dist/shared/lib/image-external";
 // import MultiCarousal from '../../../hoc/MultiCarousal'
 
 interface Props {
   // define props here
 }
 interface PATENTS {
-  image?: any;
-  name?: string;
-  content?: string;
+  image: StaticImageData;
+  name: string;
+  content: string;
   link: string;
   order_url: string;
 }

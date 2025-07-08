@@ -91,7 +91,6 @@ const index: React.FC<IndexProps> = ({ service }) => {
           ],
         });
       }
-      console.log("files", e.target.files);
     } catch (error) {
       console.error(error);
       throw new Error("An Error Occured");

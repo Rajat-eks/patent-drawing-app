@@ -3,15 +3,15 @@ import UtilityImage from "../../../assets/img/services/utility_patent.jpg";
 import UtilityImage2 from "../../../assets/img/services/utility_patent.jpg";
 import DummyImage from "../../../common/DummyImage";
 import GraphicalServiceBanner from "../../../assets/img/home/services/s2_final.png";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 interface IndexProps {
   // define props here
 }
 export interface IDUMMYIMAGE {
-  title: any;
-  image: any;
+  title: string;
+  image: StaticImageData;
 }
 const dummyImage: IDUMMYIMAGE[] = [
   {

@@ -1,13 +1,13 @@
 import React from "react";
 import { GrCertificate, MdArrowForwardIos } from "../../../assets/icons";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 interface IndexProps {
-  image?: any;
+  image: StaticImageData;
   icon?: string;
   content?: string;
-  name?: any;
+  name: string;
   link: string;
 }
 

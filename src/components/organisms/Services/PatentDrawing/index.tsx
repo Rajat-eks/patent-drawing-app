@@ -12,14 +12,14 @@ import UtilityImage6 from "../../../assets/img/Samples/Utility Drawings/UD6.jpg"
 import UtilityImage7 from "../../../assets/img/Samples/Utility Drawings/UD7.jpg";
 import UtilityImage8 from "../../../assets/img/Samples/Utility Drawings/UD8.jpg";
 import UtilityImage9 from "../../../assets/img/Samples/Utility Drawings/UD9.jpg";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface IndexProps {
   // define props here
 }
 export interface IDUMMYIMAGE {
-  title: any;
-  image: any;
+  title: string;
+  image: StaticImageData;
 }
 const dummyImage: IDUMMYIMAGE[] = [
   {

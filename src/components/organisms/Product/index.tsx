@@ -22,6 +22,8 @@ import OrderForm from "./OrderForm";
 
 interface ProductProps {
   // define props here
+
+  serviceId?: any;
 }
 
 const prices: any = [
@@ -43,8 +45,7 @@ const prices: any = [
   },
 ];
 
-const Product: React.FC<ProductProps> = (props) => {
-  const { serviceId } = useParams();
+const Product: React.FC<ProductProps> = ({ serviceId }) => {
   const [service, setService] = useState<SERVICE_INTERFACE>();
   const navigate = useRouter();
 

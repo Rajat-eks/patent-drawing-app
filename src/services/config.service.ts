@@ -1,3 +1,4 @@
+"use client";
 import * as axios from "axios";
 
 let axiosObject = axios.default.create();
@@ -12,7 +13,7 @@ axiosObject.defaults.headers.common = {
 };
 
 axiosObject.interceptors.request.use(
-  async function (config: any) {
+  async function (config: axios.InternalAxiosRequestConfig) {
     let token: any = localStorage.getItem("auth_token");
     if (token) {
       token = JSON.parse(token);

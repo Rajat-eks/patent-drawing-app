@@ -1,6 +1,6 @@
 import axiosObject from "../config.service";
 
-export const addToCart = async (payload: any) => {
+export const addToCart = async (payload: unknown) => {
   try {
     const uri: string = "order/cart";
     const response = await axiosObject.post(uri, payload);

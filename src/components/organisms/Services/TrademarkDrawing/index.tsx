@@ -6,7 +6,7 @@ import TrademarkBanner from "../../../assets/img/home/services/trademark s1_fina
 import Sample1 from "../../../assets/img/Samples/Trademark Design/TM1.jpg";
 import Sample2 from "../../../assets/img/Samples/Trademark Design/TM2.jpg";
 import Sample3 from "../../../assets/img/Samples/Trademark Design/TM3.jpg";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 interface IndexProps {
@@ -14,7 +14,7 @@ interface IndexProps {
 }
 export interface IDUMMYIMAGE {
   title: string;
-  image: any;
+  image: StaticImageData;
 }
 const dummyImage: IDUMMYIMAGE[] = [
   {

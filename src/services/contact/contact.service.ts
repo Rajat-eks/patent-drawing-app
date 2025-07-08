@@ -1,6 +1,6 @@
 import axiosObject from "../config.service";
 
-export const ContactWithUs = async (payload: any) => {
+export const ContactWithUs = async (payload: unknown) => {
   try {
     const uri: string = "contact";
     const response = await axiosObject.post(uri, payload);

@@ -6,7 +6,15 @@ import { FiUser } from "react-icons/fi";
 
 interface IndexProps {
   // define props here
-  article: any;
+  article: {
+    articleSlug: string;
+    articleHeading: string;
+    heading: string;
+    articleId: number;
+    articleDate: string;
+    filePath: string;
+    html:  string;
+  };
 }
 
 const Card: React.FC<IndexProps> = ({ article }) => {
@@ -44,12 +52,9 @@ const Card: React.FC<IndexProps> = ({ article }) => {
             className="text-[14px] text-justify pt-2 w-full"
             dangerouslySetInnerHTML={{
               __html:
-                article?.html
-              
-                  ?.slice(0, 200)
-                      .trimStart()
-                  // 🔥 removes leading spaces
-                  + "...",
+                article.html ? article.html?.slice(0, 200).trimStart() +
+                // 🔥 removes leading spaces
+                "..." : "",
             }}
           ></p>
         </div>

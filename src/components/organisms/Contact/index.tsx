@@ -1,10 +1,8 @@
 'use client'
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import ContactBanner from "../../assets/img/banner/contact-banner.png";
 import { FiPhone, CiLocationOn, CiLinkedin } from "../../assets/icons/index";
-import { FaInstagram } from "react-icons/fa";
 import { ContactWithUs } from "../../../services/contact";
-import toast from "react-hot-toast";
 import GetInTouch from "../GetInTouch";
 import { FaFacebookF, FaXTwitter } from "react-icons/fa6";
 import Image from "next/image";
@@ -30,7 +28,7 @@ const Contact: React.FC<ContactProps> = () => {
     message: "",
   });
 
-  //On Chnage Handler
+  //On Change Handler
   const onChangeHandler = (e: any) => {
     const { value, name } = e.target;
     setUserDetails({
@@ -40,7 +38,7 @@ const Contact: React.FC<ContactProps> = () => {
   };
 
   //Send a Query
-  const submitHandler = async (e: any) => {
+  const submitHandler = async (e: ChangeEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
       const payload = {
@@ -234,7 +232,7 @@ const Contact: React.FC<ContactProps> = () => {
                   className="border-[1px] outline-blue  rounded p-2 "
                   name="message"
                   value={userDetails.message}
-                  onChange={onChangeHandler}
+                  onChange={(event) => onChangeHandler(event)}
                 ></textarea>
               </div>
               <button className="bg-blue text-white w-full col-span-2 rounded-lg py-2  font-semibold">

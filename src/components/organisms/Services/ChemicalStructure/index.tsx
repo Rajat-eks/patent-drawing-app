@@ -13,15 +13,15 @@ import Sample7 from "../../../assets/img/Samples/Chemical Structure/CT7.jpg";
 import Sample8 from "../../../assets/img/Samples/Chemical Structure/CT8.jpg";
 import Sample9 from "../../../assets/img/Samples/Chemical Structure/CT9.jpg";
 import Sample10 from "../../../assets/img/Samples/Chemical Structure/CT10.jpg";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 interface IndexProps {
   // define props here
 }
 export interface IDUMMYIMAGE {
-  title: any;
-  image: any;
+  title: string;
+  image: StaticImageData;
 }
 export const dummyImage: IDUMMYIMAGE[] = [
   {

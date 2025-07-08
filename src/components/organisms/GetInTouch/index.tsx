@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { ContactWithUs } from "../../../services/contact";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -16,7 +16,7 @@ const GetInTouch = () => {
     message: "",
   });
 
-  const changeHandler = (e: any) => {
+  const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setData((prevData) => ({
       ...prevData,
@@ -24,14 +24,14 @@ const GetInTouch = () => {
     }));
   };
 
-  const closeHanle = (e: any) => {
-    if (e.target.id === "closeWrapper") {
+  const closeHandler = (e:any) => {
+    if (e.currentTarget.id === "closeWrapper") {
       setIsOpen(false);
     }
   };
 
   //Send a Query
-  const submitHandler = async (e: any) => {
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
       const payload = {
@@ -68,14 +68,14 @@ const GetInTouch = () => {
 
       {isOpen && (
         <div
-          onClick={(e) => closeHanle(e)}
+          onClick={(e) => closeHandler(e)}
           id="closeWrapper"
           className="w-full  bg-transparent bg-black fixed inset-0 z-[100] flex justify-center items-center  my-auto border-2 mr-4 md:mr-0"
         >
           <div className="flex flex-col justify-center items-center  rounded-2xl shadow-lg transform mx-auto my-auto translate-x-3 py-5 bg-[#F1F1F3] ">
             <span
               id="closeWrapper"
-              onClick={(e) => closeHanle(e)}
+              onClick={(e: React.MouseEvent<HTMLSpanElement>) => closeHandler(e)}
               className="z-10 absolute top-2 right-4 cursor-pointer"
             >
               X

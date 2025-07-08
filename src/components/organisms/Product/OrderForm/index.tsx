@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useFormik } from "formik";
 import { getCountry, getCountryCode } from "@/utils/helper";
 import { useRouter } from "next/navigation";
@@ -46,11 +46,14 @@ const patentDrawings = [
   { label: "Other", value: "Other" },
 ];
 
-const OrderForm = ({ serviceId, service }: any) => {
+const OrderForm = ({
+  serviceId,
+  service,
+}: { serviceId: string; service: { [key: string]: any } } | any) => {
   const navigate = useRouter();
   const dispatch = useDispatch();
   const [countOfItem, setCountOfItem] = useState<number>(1);
-  const [files, setFiles] = useState<File[]>([]);
+  const [files, setFiles] = useState<any[]>([]);
 
   //ADD ITEM IN CART
   const addItemHandler = () => {};
@@ -104,7 +107,6 @@ const OrderForm = ({ serviceId, service }: any) => {
       }
     },
   });
-  console.log("for", formik.values);
   return (
     <section className="py-5">
       <form onSubmit={formik.handleSubmit} className="grid grid-cols-2 gap-5">
@@ -235,7 +237,9 @@ const OrderForm = ({ serviceId, service }: any) => {
                 type="text"
                 value={countOfItem}
                 disabled
-                onChange={(e: any) => setCountOfItem(Number(e.target.value))}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setCountOfItem(Number(e.target.value))
+                }
                 className="py-[1px] px-[2px] text-center rounded border-2 w-10 border-blue font-semibold"
               />
               <button
@@ -272,7 +276,16 @@ const OrderForm = ({ serviceId, service }: any) => {
 
 export default OrderForm;
 
-const Input = ({ name, placeholder, required, ...props }: any) => (
+const Input = ({
+  name,
+  placeholder,
+  required,
+  ...props
+}: {
+  name: string;
+  placeholder: string;
+  required?: boolean;
+}) => (
   <div className="flex flex-col text-[14px] text-gray-800">
     <label htmlFor="">
       {placeholder} {required && <span className="text-red font-bold">*</span>}
@@ -290,7 +303,7 @@ const Input = ({ name, placeholder, required, ...props }: any) => (
 interface SearchableSelectProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   /** list of {label,value} items */
-  options: any[];
+  options: { label: string; value: string }[];
   /** placeholder + visual label */
   placeholder?: string;
   /** show * if required (Formik validation still lives in your schema) */
@@ -334,7 +347,7 @@ const Select: React.FC<SearchableSelectProps> = ({
   };
 
   /* pick option */
-  const pick = (opt: any) => {
+  const pick = (opt: { label: string; value: string }) => {
     fireChange(opt.value);
     setQuery(opt.label);
     setOpen(false);
@@ -416,7 +429,18 @@ const Select: React.FC<SearchableSelectProps> = ({
   );
 };
 
-const TextArea = ({ name, placeholder, note, required, ...props }: any) => (
+const TextArea = ({
+  name,
+  placeholder,
+  note,
+  required,
+  ...props
+}: {
+  name: string;
+  placeholder: string;
+  note?: string;
+  required?: boolean;
+}) => (
   <div className="flex flex-col text-[14px] text-gray-800">
     <label htmlFor="">
       {placeholder} {required && <span className="text-red font-bold">*</span>}
@@ -434,7 +458,15 @@ const TextArea = ({ name, placeholder, note, required, ...props }: any) => (
   </div>
 );
 
-const FileUpload = ({ files, setFiles }: any) => {
+const FileUpload = ({
+  files,
+  setFiles,
+}: {
+  files: { name: string; size: number; type: string }[];
+  setFiles: React.Dispatch<
+    React.SetStateAction<{ name: string; size: number; type: string }[]>
+  >;
+}) => {
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const uploadedFile = event.target.files?.[0];
     if (uploadedFile) {
@@ -443,7 +475,7 @@ const FileUpload = ({ files, setFiles }: any) => {
   };
 
   const removeHandler = (id: number) => {
-    setFiles([...files.filter((_: any, index: number) => index + 1 != id)]);
+    setFiles([...files.filter((_: unknown, index: number) => index + 1 != id)]);
   };
 
   return (
@@ -484,26 +516,31 @@ const FileUpload = ({ files, setFiles }: any) => {
           {files?.length > 0 && (
             <div className="mt-6 border-t pt-4">
               <ul className="space-y-2">
-                {files.map((file: any, index: number) => (
-                  <li
-                    key={index}
-                    className=" relative grid grid-cols-3 items-center justify-between rounded border p-3 text-sm bg-gray-50 shadow-sm"
-                  >
-                    <span
-                      onClick={() => removeHandler(index + 1)}
-                      className="absolute top-0 right-1  h-4 w-4 cursor-pointer text-red pt-1"
+                {files.map(
+                  (
+                    file: { name: string; size: number; type: string },
+                    index: number
+                  ) => (
+                    <li
+                      key={index}
+                      className=" relative grid grid-cols-3 items-center justify-between rounded border p-3 text-sm bg-gray-50 shadow-sm"
                     >
-                      X
-                    </span>
-                    <div>
-                      <p className="font-medium">{file.name}</p>
-                      <p className="text-gray-500 text-xs">
-                        {(file.size / 1024).toFixed(2)} KB •{" "}
-                        {file.type || "Unknown type"}
-                      </p>
-                    </div>
-                  </li>
-                ))}
+                      <span
+                        onClick={() => removeHandler(index + 1)}
+                        className="absolute top-0 right-1  h-4 w-4 cursor-pointer text-red pt-1"
+                      >
+                        X
+                      </span>
+                      <div>
+                        <p className="font-medium">{file.name}</p>
+                        <p className="text-gray-500 text-xs">
+                          {(file.size / 1024).toFixed(2)} KB •{" "}
+                          {file.type || "Unknown type"}
+                        </p>
+                      </div>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
           )}
