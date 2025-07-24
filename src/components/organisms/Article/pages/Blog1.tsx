@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import Inquiry from "../ArticleContent/Inquiry";
 import Interested from "../ArticleContent/Interested";
 import ArticleBanner from "../../../assets/img/article/article-banner.png";
