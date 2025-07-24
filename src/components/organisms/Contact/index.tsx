@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { ChangeEvent, useState } from "react";
 import ContactBanner from "../../assets/img/banner/contact-banner.png";
 import { FiPhone, CiLocationOn, CiLinkedin } from "../../assets/icons/index";
@@ -64,7 +64,6 @@ const Contact: React.FC<ContactProps> = () => {
 
   return (
     <main className="flex flex-col justify-between ">
-  
       <section className="md:h-[36vh] sm:h-[30vh] h-[20vh]  w-full bg-blue relative">
         <Image
           src={ContactBanner}
@@ -112,6 +111,19 @@ const Contact: React.FC<ContactProps> = () => {
                 <h2 className=" font-semibold">
                   Suite-427,425 Broadhollow Road
                   <br /> Melville | NY-11747
+                </h2>
+              </div>
+            </div>
+            <div className=" bg-[#EBF1F8] py-6  md:py-0   items-center   rounded shadow-lg text-gray-700 flex gap-4 px-4">
+              <span className="border-2 h-[60px] w-[60px] rounded-full flex items-center justify-center border-blue text-red">
+                <CiLocationOn size={28} />
+              </span>
+              <div>
+                <p className="text-[14px] font-[500] font-sans">
+                  Corporate Headquarters:
+                </p>
+                <h2 className=" font-semibold">
+                  SDF A-05, NSEZ, Noida–Dadri <br /> Road, Noida Phase II -201305
                 </h2>
               </div>
             </div>
