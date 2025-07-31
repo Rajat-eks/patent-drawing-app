@@ -6,7 +6,7 @@ import ArticleBanner from "../../../assets/img/article/article-banner.png";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 
-const ArticleContent = ({ data }:any) => {
+const ArticleContent = ({ data }: any) => {
   const { slug }: { slug: string } = useParams();
   const [article, setArticle] = useState<{
     id: number;
@@ -63,20 +63,17 @@ const ArticleContent = ({ data }:any) => {
           </section>
         </section>
 
-        {/* Right Sidebar */}
-        <section className="md:w-[30%] w-full py-6 px-2 md:h-[40vh] ">
+        <section className="md:w-[30%]  w-full py-6 px-2 md:h-[40vh] ">
           <div className="mb-8 ">
-            {/* Interested component stays fixed in place */}
             <Interested />
           </div>
 
-          {/* Sticky Inquiry Component */}
           <div
             id="freeze"
-            className="py-8 sticky top-0"
+            className="py-8 sticky  top-0 "
             style={{
               zIndex: 10,
-              backgroundColor: "white", // Ensures visibility of the sticky element
+              backgroundColor: "white",
             }}
           >
             <Inquiry />

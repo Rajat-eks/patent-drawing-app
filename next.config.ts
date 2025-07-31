@@ -11,7 +11,22 @@ const nextConfig: NextConfig = {
     ], // ✅ add the domain here
   },
   eslint: {
-    ignoreDuringBuilds: true, // ✅ This is what you want
+    ignoreDuringBuilds: true,
+  },
+
+  async redirects() {
+    return [
+      {
+        source: "/our_company",
+        destination: "/our-company",
+        permanent: true,
+      },
+      {
+        source: "/contact_us",
+        destination: "/contact-us",
+        permanent: true,
+      },
+    ];
   },
 };
 
