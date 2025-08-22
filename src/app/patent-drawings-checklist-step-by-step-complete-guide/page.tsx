@@ -58,7 +58,7 @@ const page: React.FC<PageProps> = (props) => {
             className="h-full w-full object-cover "
           />
           {/* Overlay text inside the relative container */}
-          <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center px-14 text-white bg-black/60">
+          <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center px-8 text-white bg-black/60">
             <div className="space-y-2">
               <h3 className="text-3xl font-semibold">
                 Why This Checklist Matters
@@ -131,8 +131,8 @@ const page: React.FC<PageProps> = (props) => {
       </section>
       <section className="bg-gray-50  p-10">
         <h3 className="text-xl font-semibold">
-          Submit your information here to download the Mastering Line Quality in
-          Patent Drawings: A Comprehensive Guide
+          Submit your information here to download the Your Ultimate Guide to
+          USPTO-Compliant Patent Drawings: A Comprehensive Guide
         </h3>
         <form
           // onSubmit={submitHandler}
