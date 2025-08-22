@@ -23,7 +23,7 @@ const renderImage = (item: IDUMMYIMAGE) => (
     alt={item.title}
     loading="lazy"
     style={{ width: "100%", height: "200px" }}
-    className="border-4 border-gray-400 rounded object-fit"
+    className="border-4 border-gray-400 rounded object-fit hover:cursor-zoom-out hover:scale-200 transition-transform duration-200 "
   />
 );
 const sample: IDUMMYIMAGE[] = [
