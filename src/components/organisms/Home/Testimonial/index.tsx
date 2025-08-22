@@ -1,10 +1,7 @@
 import React from "react";
-import { FaStar } from "../../../assets/icons";
 import SAMPLE from "../../../assets/img/sample1.webp";
 import MultiCarousal from "../../../hoc/MultiCarousal";
-import User from "../../../assets/img/home/user.png";
 import { ImQuotesLeft } from "react-icons/im";
-import { RiDoubleQuotesR } from "react-icons/ri";
 import Heading from "../../../molecules/Heading";
 import { StaticImageData } from "next/image";
 
@@ -97,30 +94,27 @@ const Testimonial: React.FC<TestimonialProps> = (props) => {
       </h4>
       <div className="w-full p-2">
         <MultiCarousal items={4} dots={true} arrows={false}>
-          {testimonial?.map(
-            (
-              { designation, message, name, star, avatar }: TESTIMONIAL,
-              index: number
-            ) => {
-              return (
-                <div
-                  // style={{ boxShadow: "-6px -6px 10px -3px" }}
-                  key={index }
-                  className={`bg-white shadow-sm rounded-xl border-[1px] group hover:border-blue  flex flex-col items-center justify-center  h-[14rem] mx-4 my-12 ${index % 2 == 0 ? "shadow-red" : "shadow-blue"}`}
-                >
-                  <div className="h-[4rem] w-[4rem] bg-white rounded-full object-fill fixed top-4 shadow-md  shadow-blue flex justify-center items-center text-red group-hover:border-blue ">
-                    <ImQuotesLeft size={30} />
-                  </div>
-                  <div className="relative  flex flex-col items-center justify-center ">
-                    <p className="text-sm text-gray-700 px-4 py-2 text-center text-[18px] font-poppins">
-                      {message}
-                      <span className="flex flex-row-reverse"></span>
-                    </p>
-                  </div>
+          {testimonial?.map(({ message }: TESTIMONIAL, index: number) => {
+            return (
+              <div
+                // style={{ boxShadow: "-6px -6px 10px -3px" }}
+                key={index}
+                className={`bg-white shadow-sm rounded-xl border-[1px] group hover:border-blue  flex flex-col items-center justify-center  h-[14rem] mx-4 my-12 ${
+                  index % 2 == 0 ? "shadow-red" : "shadow-blue"
+                }`}
+              >
+                <div className="h-[4rem] w-[4rem] bg-white rounded-full object-fill fixed top-4 shadow-md  shadow-blue flex justify-center items-center text-red group-hover:border-blue ">
+                  <ImQuotesLeft size={30} />
                 </div>
-              );
-            }
-          )}
+                <div className="relative  flex flex-col items-center justify-center ">
+                  <p className="text-sm text-gray-700 px-4 py-2 text-center text-[15px] font-poppins">
+                    {message}
+                    <span className="flex flex-row-reverse"></span>
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </MultiCarousal>
       </div>
     </main>

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { memo, ReactElement, useState } from "react";
 import { ContactWithUs } from "../../../../../services/contact";
 import { useRouter } from "next/navigation";
@@ -24,7 +24,9 @@ const Inquiry: React.FC<IndexProps> = (props) => {
   });
 
   //On Change Handler
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const onChangeHandler = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { value, name } = e.target;
     setUserDetails({
       ...userDetails,

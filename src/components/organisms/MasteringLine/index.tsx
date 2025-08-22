@@ -1,8 +1,7 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import MasteringGuideBook from "../../assets/img/mastering-guidebook.png";
 import Banner from "../../assets/img/mastering-banner.jpg";
-
 import { RequestForMastering } from "../../../services/contact/connectForSheet";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

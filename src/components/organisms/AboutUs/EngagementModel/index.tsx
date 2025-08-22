@@ -11,7 +11,6 @@ interface IndexProps {
 const index: React.FC<IndexProps> = (props) => {
   return (
     <main className=" flex flex-col   gap-6">
-   
       <div className="flex flex-col gap-1">
         <h1 className="  text-2xl font-semibold text-blue font-poppins ">
           Our Engagement Models
