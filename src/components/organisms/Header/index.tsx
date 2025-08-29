@@ -120,6 +120,10 @@ const headers: HEADER[] = [
         name: "Articles",
         link: "/blog",
       },
+      {
+        name: "Downloadable Content",
+        link: "/patent-drawing-knowledge-hub",
+      },
     ],
   },
   {

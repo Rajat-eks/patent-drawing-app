@@ -1,10 +1,12 @@
 import React from "react";
 import Card from "./_card";
 import { buildMeta } from "@/lib/seo";
-import Banner1 from "../../components/assets/img/S1_Promotional banner_Final.png"
+import Banner1 from "../../components/assets/img/S1_Promotional banner_Final.png";
 import ComplexDrawing from "../../components/assets/img/ultimate-guidebook.png";
 import MasteringGuideBook from "../../components/assets/img/mastering-guidebook.png";
 import ComplexDrawing2 from "../../components/assets/img/guide.png";
+import Image from "next/image";
+import ArticleBanner from "../../components/assets/img/article/article-banner.png";
 interface PageProps {
   // define props here
 }
@@ -38,23 +40,31 @@ const pages = [
 const page: React.FC<PageProps> = (props) => {
   return (
     <main className="pt-10">
-      <section className="flex flex-col items-center justify-between mb-10 space-y-2">
-        <h1 className="text-3xl fonte-smibold ">
-          Patent Drawing Knowledge Hub
-        </h1>
-        <p className="text-center px-24">
-          Find comprehensive guides, tutorials, and downloadable resources about
-          patent drawings that help inventors and attorneys create precise,
-          compliant, and professional patent illustrations with ease.
-        </p>
+      <section>
+        <div className="h-[40vh] w-full relative">
+          <Image
+            src={ArticleBanner}
+            alt="ArticleBanner"
+            className="w-full"
+            fill
+            priority
+          />
+        </div>
+        <div className="absolute top-60 left-20 text-3xl space-y-2 text-white ">
+          <h1 className="text-3xl font-bold">Patent Drawing Knowledge Hub</h1>
+          <p className="text-[19px] font-normal w-[1100px]">
+            {" "}
+            Find comprehensive guides, tutorials, and downloadable resources
+            about patent drawings that help inventors and attorneys create
+            precise, compliant, and professional patent illustrations with ease.
+          </p>
+        </div>
       </section>
+
       <section className="px-10 py-5 grid grid-cols-3 space-y-5 gap-5">
-        {
-          pages.map((item, index) => (
-            <Card key={index} image={item.image} url={item.url} />
-          ))
-        }
-        
+        {pages.map((item, index) => (
+          <Card key={index} image={item.image} url={item.url} />
+        ))}
       </section>
     </main>
   );

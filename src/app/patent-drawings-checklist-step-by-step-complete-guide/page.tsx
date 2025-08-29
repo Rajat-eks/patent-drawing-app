@@ -19,7 +19,7 @@ const page: React.FC<PageProps> = (props) => {
             className="h-full w-full object-cover"
           />
         </div>
-        <div className=" absolute top-50 left-14 right-0 bottom-0 text-white  space-y-2">
+        <div className=" absolute top-55 left-14 right-0 bottom-0 text-white  space-y-2">
           <h3 className="text-3xl font-semibold">
             Patent Drawings Checklist: A Step-by-Step Complete Guide
           </h3>
@@ -28,8 +28,8 @@ const page: React.FC<PageProps> = (props) => {
           </p>
         </div>
       </section>
-      <section className="px-6 flex items-start gap-8 h-[60vh]">
-        <section className="w-[75%] text-[17px] space-y-4 pt-20">
+      <section className="px-[56px] flex items-start gap-8 h-[60vh]">
+        <section className="w-[75%] text-[19px] space-y-4 pt-20">
           <p>
             Patent drawings serve as the visual foundation of your intellectual
             property protection strategy. Every line, dimension, and annotation
@@ -58,7 +58,7 @@ const page: React.FC<PageProps> = (props) => {
             className="h-full w-full object-cover "
           />
           {/* Overlay text inside the relative container */}
-          <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center px-8 text-white bg-black/60">
+          <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center px-[56px] text-white bg-black/60">
             <div className="space-y-2">
               <h3 className="text-3xl font-semibold">
                 Why This Checklist Matters
@@ -73,12 +73,12 @@ const page: React.FC<PageProps> = (props) => {
           </div>
         </div>
       </section>
-      <section className="p-6 space-y-10">
+      <section className="py-6 px-[56px] space-y-10 flex gap-8 border-r-[2px]">
         <div className="space-y-3">
           <h4 className="text-2xl  font-semibold">
             Who Should Read This Guide
           </h4>
-          <ul className="space-y-1">
+          <ul className="space-y-1 text-[19px] text-justify">
             <li>
               • Patent attorneys and agents seeking comprehensive drawing
               compliance standards to avoid USPTO rejections and streamline
@@ -105,7 +105,7 @@ const page: React.FC<PageProps> = (props) => {
           <h4 className="text-2xl  font-semibold">
             What You'll Gain From This Guide
           </h4>
-          <ul className="space-y-1">
+          <ul className="space-y-1 text-[19px] text-justify">
             <li>
               • A complete checklist covering USPTO technical requirements, from
               paper specifications to digital submission standards, ensuring
@@ -130,9 +130,9 @@ const page: React.FC<PageProps> = (props) => {
         </div>
       </section>
       <section className="bg-gray-50  p-10">
-        <h3 className="text-xl font-semibold">
-          Submit your information here to download the Your Ultimate Guide to
-          USPTO-Compliant Patent Drawings: A Comprehensive Guide
+        <h3 className="text-2xl font-semibold">
+          Submit your information here to download the Patent Drawings
+          Checklist: A Step-by-Step Complete Guide-
         </h3>
         <form
           // onSubmit={submitHandler}

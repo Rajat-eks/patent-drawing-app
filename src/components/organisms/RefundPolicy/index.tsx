@@ -7,7 +7,6 @@ interface PageProps {
 const RefundPolicy: React.FC<PageProps> = (props) => {
   return (
     <main className="bg-gradient-to-tr from-[#FBF3E8] to-[#D5E1E2] via-[#F0EFFB]  p-4  md:py-10 md:px-60 font-poppins ">
-  
       <div className="container mx-auto p-8  bg-white shadow-xl rounded-lg">
         <h1 className="text-3xl font-bold mb-6 text-center">Refund Policy</h1>
 
