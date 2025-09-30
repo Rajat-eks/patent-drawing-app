@@ -58,12 +58,7 @@ const leadershipTeam: {
     linkdin: "https://in.linkedin.com/in/ram-tenneti-6a91976",
     avatar: Ram,
   },
-  {
-    name: "Nishant Singh",
-    designation: "Vice President",
-    linkdin: "https://in.linkedin.com/in/nishant-singh-653966",
-    avatar: Nishant,
-  },
+ 
   {
     name: "Manoj Poonia",
     designation: "Vice President",
