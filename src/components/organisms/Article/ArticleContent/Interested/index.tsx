@@ -30,7 +30,7 @@ const Interested: React.FC<IndexProps> = (props) => {
         <hr />
 
         <ul className="p-2 flex flex-col space-y-2">
-          {articles?.map((article: {articleSlug: string, articleHeading: string, articleDate: string},index:number) => (
+          {articles?.filter((_,index)=>index<=5)?.map((article: {articleSlug: string, articleHeading: string, articleDate: string},index:number) => (
             <Link key={index} href={`/blog/${article.articleSlug}`}>
               <li className="flex flex-col  bg-white p-3 space-y-1 hover:bg-blue-100 transition-all duration-200">
                 <p className="text-[15px]">{article?.articleHeading}</p>
