@@ -3,7 +3,6 @@ import * as axios from "axios";
 
 let axiosObject = axios.default.create();
 // axiosObject.defaults.baseURL = "http://localhost:8080/api/v1";
-// axiosObject.defaults.baseURL = "https://tpd-server-0twv.onrender.com/api/v1";
 axiosObject.defaults.baseURL = "https://api.thepatentdrawings.com/api/v1";
 axiosObject.defaults.timeout = 80000;
 axiosObject.defaults.withCredentials = false;

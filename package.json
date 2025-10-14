@@ -2,11 +2,13 @@
   "name": "drawing-web",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "build": "next build"
   },
   "dependencies": {
     "@paypal/paypal-js": "^8.2.0",
@@ -17,6 +19,7 @@
     "country-list-with-dial-code-and-flag": "^5.1.0",
     "country-state-city": "^3.2.1",
     "formik": "^2.4.6",
+    "globby": "^15.0.0",
     "next": "15.3.4",
     "react": "^19.0.0",
     "react-countup": "^6.5.3",
