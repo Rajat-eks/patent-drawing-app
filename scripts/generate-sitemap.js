@@ -76,6 +76,22 @@ import { globby } from "globby";
     uniqueUrls.add(`${baseUrl}${route}`);
   });
 
+  // Add product pages (dynamic routes)
+  const productRoutes = [
+    "/product/utility-patent-drawings",
+    "/product/design-patent-drawings",
+    "/product/chemical-structure-drawings",
+    "/product/3d-modeling-drawings",
+    "/product/trademark-drawings",
+    "/product/objected-patent-drawings",
+    "/product/trial-graphic-services",
+    "/product/patent_drawing",
+  ];
+
+  productRoutes.forEach((route) => {
+    uniqueUrls.add(`${baseUrl}${route}`);
+  });
+
   // Add other specific routes
   const otherRoutes = [
     "/our-company",
@@ -116,6 +132,9 @@ import { globby } from "globby";
       changefreq = "daily";
     } else if (path.startsWith("/services/")) {
       priority = "0.8";
+      changefreq = "weekly";
+    } else if (path.startsWith("/product/")) {
+      priority = "0.9";
       changefreq = "weekly";
     } else if (path.includes("blog") || path.includes("knowledge-hub")) {
       priority = "0.7";

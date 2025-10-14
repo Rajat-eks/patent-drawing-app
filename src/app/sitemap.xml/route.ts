@@ -40,10 +40,22 @@ const serviceRoutes = [
   { path: '/services/patent_drawing', priority: '0.8', changefreq: 'weekly' },
 ];
 
+// Product routes (higher priority for conversion)
+const productRoutes = [
+  { path: '/product/utility-patent-drawings', priority: '0.9', changefreq: 'weekly' },
+  { path: '/product/design-patent-drawings', priority: '0.9', changefreq: 'weekly' },
+  { path: '/product/chemical-structure-drawings', priority: '0.9', changefreq: 'weekly' },
+  { path: '/product/3d-modeling-drawings', priority: '0.9', changefreq: 'weekly' },
+  { path: '/product/trademark-drawings', priority: '0.9', changefreq: 'weekly' },
+  { path: '/product/objected-patent-drawings', priority: '0.9', changefreq: 'weekly' },
+  { path: '/product/trial-graphic-services', priority: '0.9', changefreq: 'weekly' },
+  { path: '/product/patent_drawing', priority: '0.9', changefreq: 'weekly' },
+];
+
 export async function GET() {
   const lastmod = new Date().toISOString();
   
-  const allRoutes = [...staticRoutes, ...serviceRoutes];
+  const allRoutes = [...staticRoutes, ...serviceRoutes, ...productRoutes];
   
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
