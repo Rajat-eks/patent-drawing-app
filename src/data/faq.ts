@@ -1,7 +1,11 @@
 export const faqData = [
   {
-    service:'Utility Patent Drawings',
+    service: "Utility Patent Drawings",
     faq: [
+      {
+        ques: "What is the utility patent drawing cost?",
+        ans: `Our utility patent drawing cost is just $28 per sheet, which is an exclusive discounted price. Each sheet includes up to 2 professionally drawn figures that meet USPTO standards and requirements. This competitive pricing covers high-quality, patent-compliant drawings with proper formatting, view labels, and high-resolution digital files suitable for filing. The utility patent drawing cost includes reasonable revisions to ensure accuracy. Download our complex design patent drawing samples to see the quality and detail we deliver for every project.`,
+      },
       {
         ques: "Why are utility patent drawings essential for my application?",
         ans: `Utility patent drawings visually demonstrate your invention’s functionality and support your patent claims, ensuring compliance with USPTO guidelines to avoid delays or rejections.`,
@@ -42,7 +46,7 @@ export const faqData = [
     ],
   },
   {
-    service:'Objected Patent Drawings',
+    service: "Objected Patent Drawings",
     faq: [
       {
         ques: "What is an Objected Patent Drawing Service?",
@@ -84,8 +88,12 @@ export const faqData = [
     ],
   },
   {
-    service:'Design Patent Drawings',
+    service: "Design Patent Drawings",
     faq: [
+      {
+        ques: "What is the design patent drawing cost?",
+        ans: `Our design patent drawing cost is just $28 per sheet, which is an exclusive discounted price. Each sheet includes up to 2 professionally drawn figures that meet USPTO standards and requirements. This competitive pricing covers high-quality, patent-compliant drawings with proper formatting, view labels, and high-resolution digital files suitable for filing. The design patent drawing cost includes reasonable revisions to ensure accuracy. Download our complex design patent drawing samples to see the quality and detail we deliver for every project.`,
+      },
       {
         ques: "Why are design patent drawings critical for my application?",
         ans: `Design patent drawings legally protect the ornamental features of your invention. They must clearly illustrate every visual aspect to meet USPTO standards and prevent rejections.`,

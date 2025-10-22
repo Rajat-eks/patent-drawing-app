@@ -59,8 +59,8 @@ you secure your Design Patent Drawing. Buy now to take advantage of this exclusi
     seo: {
       title: "Design Patent Drawings Cost | $28 Per Sheet Pricing",
       description:
-        "Order online design patent drawings starting at $28 per sheet; secure your design with our high-quality, affordable drawings, and buy now for exclusive pricing.",
-      keywords: "Order Online Design Patent Drawings",
+        "Design Patent Drawing for just $28 per sheet! with our competitive design patent drawing cost, our high-quality drawings  can help you  secure  your Design patent. ",
+      keywords: "Design Patent Drawing Cost",
     },
   },
   {

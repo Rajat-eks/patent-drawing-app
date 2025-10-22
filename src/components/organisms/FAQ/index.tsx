@@ -98,7 +98,6 @@ const FAQ = () => {
 
   return (
     <div>
-  
       <div className="bg-[#F2F4FF] ">
         <section className="max-w-5xl mx-auto py-4 sm:py-6">
           <div className="flex items-center justify-center flex-col gap-y-2 py-5">
