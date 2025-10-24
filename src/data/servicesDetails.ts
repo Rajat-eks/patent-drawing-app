@@ -35,31 +35,29 @@ export const serviceData: SERVICE_INTERFACE[] = [
     path: "1",
     id: "utility-patent-drawings",
     name: "Utility Patent Drawings",
-    details: `Get Professional Utility Patent Drawing for just $28 per sheet! Our high-quality drawings can help
-you secure your Utility Patent Drawing. Buy now to take advantage of this exclusive discounted price!`,
+    details: `Get Professional Utility Patent Drawing for just $28 per sheet (up to 2 figures)! With our competitive utility patent drawing cost, our high-quality drawings can help you secure your Utility Patent Drawing. Buy now to take advantage of this exclusive discounted price!`,
     price: 28,
     strikePrice: 39,
     samples: [UtilityDrawing1, UtilityDrawing2],
     seo: {
       title: "Utility Patent Drawings Cost | $28 Per Sheet Pricing",
       description:
-        "Order online utility patent drawings starting at $28 per sheet, ensuring high-quality, accurate drawings to secure your utility patent quickly and affordably.",
-      keywords: "Order Online Utility Patent Drawings",
+        "Utility Patent Drawing for just $28 per sheet! With our competitive utility patent drawing cost, our high-quality drawings can help you secure your Utility Patent.",
+      keywords: "Utility Patent Drawing Cost",
     },
   },
   {
     path: " 2",
     id: "design-patent-drawings",
     name: "Design Patent Drawings",
-    details: `Get Professional Design Patent Drawing for just $28 per sheet! Our high-quality drawings can help
-you secure your Design Patent Drawing. Buy now to take advantage of this exclusive discounted price!`,
+    details: `Get Professional Design Patent Drawing for just $28 per sheet (up to 2 figures)! With our competitive design patent drawing cost, our high-quality drawings can help you secure your Design Patent Drawing. Buy now to take advantage of this exclusive discounted price!`,
     price: 28,
     strikePrice: 49,
     samples: [DesignDrawing1, DesignDrawing2],
     seo: {
       title: "Design Patent Drawings Cost | $28 Per Sheet Pricing",
       description:
-        "Design Patent Drawing for just $28 per sheet! with our competitive design patent drawing cost, our high-quality drawings  can help you  secure  your Design patent. ",
+        "Design Patent Drawing for just $28 per sheet! With our competitive design patent drawing cost, our high-quality drawings can help you secure your Design Patent.",
       keywords: "Design Patent Drawing Cost",
     },
   },
