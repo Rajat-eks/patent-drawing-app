@@ -45,8 +45,8 @@ import { globby } from "globby";
 
     // Handle dynamic routes
     if (path.includes("[slug]")) {
-      // For blog posts, you might want to add specific blog post URLs
-      // For now, we'll skip dynamic routes or you can add specific ones
+      // Blog posts are handled separately by fetching from API
+      // Skip other dynamic [slug] routes
       return;
     }
 
@@ -59,6 +59,28 @@ import { globby } from "globby";
     const route = path === "" ? "/" : path;
     uniqueUrls.add(`${baseUrl}${route}`);
   });
+
+  // Fetch and add blog post URLs from API
+  try {
+    const apiBaseUrl = "https://api.thepatentdrawings.com/api/v1";
+    const response = await fetch(`${apiBaseUrl}/article/get-all`);
+    
+    if (response.ok) {
+      const data = await response.json();
+      if (data && data.data && Array.isArray(data.data)) {
+        data.data.forEach((article) => {
+          if (article.articleSlug) {
+            uniqueUrls.add(`${baseUrl}/blog/${article.articleSlug}`);
+          }
+        });
+        console.log(`📝 Added ${data.data.length} blog post(s) to sitemap`);
+      }
+    } else {
+      console.warn(`⚠️  Failed to fetch blog posts: ${response.status} ${response.statusText}`);
+    }
+  } catch (error) {
+    console.warn(`⚠️  Error fetching blog posts: ${error.message}`);
+  }
 
   // Add specific service routes
   const serviceRoutes = [
@@ -120,42 +142,48 @@ import { globby } from "globby";
   });
 
   // Convert Set to array and create sitemap entries with SEO attributes
-  const sitemapEntries = Array.from(uniqueUrls).map((url) => {
-    const path = url.replace(baseUrl, "");
-    
-    // Determine priority and changefreq based on page type
-    let priority = "0.5";
-    let changefreq = "monthly";
-    
-    if (path === "/" || path === "") {
-      priority = "1.0";
-      changefreq = "daily";
-    } else if (path.startsWith("/services/")) {
-      priority = "0.8";
-      changefreq = "weekly";
-    } else if (path.startsWith("/product/")) {
-      priority = "0.9";
-      changefreq = "weekly";
-    } else if (path.includes("blog") || path.includes("knowledge-hub")) {
-      priority = "0.7";
-      changefreq = "weekly";
-    } else if (path.includes("contact") || path.includes("about")) {
-      priority = "0.6";
-      changefreq = "monthly";
-    } else if (path.includes("cart") || path.includes("auth") || path.includes("thank-you")) {
-      // Skip non-crawlable pages
-      return null;
-    }
-    
-    const lastmod = new Date().toISOString();
-    
-    return `  <url>
+  const sitemapEntries = Array.from(uniqueUrls)
+    .map((url) => {
+      const path = url.replace(baseUrl, "");
+
+      // Determine priority and changefreq based on page type
+      let priority = "0.5";
+      let changefreq = "monthly";
+
+      if (path === "/" || path === "") {
+        priority = "1.0";
+        changefreq = "daily";
+      } else if (path.startsWith("/services/")) {
+        priority = "0.8";
+        changefreq = "weekly";
+      } else if (path.startsWith("/product/")) {
+        priority = "0.9";
+        changefreq = "weekly";
+      } else if (path.includes("blog") || path.includes("knowledge-hub")) {
+        priority = "0.7";
+        changefreq = "weekly";
+      } else if (path.includes("contact") || path.includes("about")) {
+        priority = "0.6";
+        changefreq = "monthly";
+      } else if (
+        path.includes("cart") ||
+        path.includes("auth") ||
+        path.includes("thank-you")
+      ) {
+        // Skip non-crawlable pages
+        return null;
+      }
+
+      const lastmod = new Date().toISOString();
+
+      return `  <url>
     <loc>${url}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
   </url>`;
-  }).filter(entry => entry !== null);
+    })
+    .filter((entry) => entry !== null);
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
