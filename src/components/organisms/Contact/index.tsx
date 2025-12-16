@@ -91,7 +91,7 @@ const Contact: React.FC<ContactProps> = () => {
                   Call us directly at:
                 </p>
                 <h2 className="text-xl font-semibold">
-                  <a href="tel:+1-972-256-8133">+1-972-256-8133</a>
+                  <a href="tel:+1-312-428-5732">+1-312-428-5732</a>
                 </h2>
                 <p>
                   <a href="mailto:info@thepatentdrawings.com">

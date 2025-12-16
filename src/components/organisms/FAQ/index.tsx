@@ -19,12 +19,12 @@ const FAQs: FAQ[] = [
     ques: "Confidentiality. Do you sign a Non-Disclosure Agreement?",
     ans: `We have posted our NDA online for you to examine when placing your order in order to safeguard the privacy of your idea. The NDA will be electronically completed if you check the box beneath it, and both parties will e-sign it. Your invention's confidentiality and protection will be guaranteed as a result.
 For the Non-Disclosure Agreement (NDA), {{click here}}.
-We can be reached by phone at +1-972-256-8133 or by email at info@thepatentdrawings.com
+We can be reached by phone at +1-312-428-5732or by email at info@thepatentdrawings.com
 `,
   },
   {
     ques: "Do you do patentability search along with the drawings?",
-    ans: `To find existing patents and patent applications as well as non-patent literature, including research papers, articles, and conference presentations, that either expressly or implicitly disclose the idea under investigation, we would highly advise conducting a patentability search. In addition to giving the inventor the chance to improve upon pertinent previous arts at the outset, a patentability search will reduce the likelihood of coming across pertinent prior art when the patent application is being examined. Please contact us by phone at +1-972-256-8133 or by email at info@thepatentdrawings.com about your invention's patentability search.`,
+    ans: `To find existing patents and patent applications as well as non-patent literature, including research papers, articles, and conference presentations, that either expressly or implicitly disclose the idea under investigation, we would highly advise conducting a patentability search. In addition to giving the inventor the chance to improve upon pertinent previous arts at the outset, a patentability search will reduce the likelihood of coming across pertinent prior art when the patent application is being examined. Please contact us by phone at +1-312-428-5732or by email at info@thepatentdrawings.com about your invention's patentability search.`,
   },
   {
     ques: "Would you recommend a patent search before drafting the patent drawings?",
@@ -67,7 +67,7 @@ We can be reached by phone at +1-972-256-8133 or by email at info@thepatentdrawi
     ans: `There are two ways to modify or cancel an order that has already been placed:
 
 1.	By contacting the account manager, you were given for this delivery via email (the specifics will be included in the email you received upon order confirmation).
-2.	By contacting +1-972-256-8133, our customer service helpline
+2.	By contacting +1-312-428-5732, our customer service helpline
 
 Although we will try our best to modify your order, if work on the request has already started or if the scope changes substantially, there may be additional fees. Changes should therefore be made as soon as possible.
 `,
@@ -78,7 +78,7 @@ Although we will try our best to modify your order, if work on the request has a
   },
   {
     ques: "Can I discuss with someone?",
-    ans: `We are available Monday to Friday, 24x7. Please call us at +1-972-256-8133 or write to us at info@thepatentdrawings.com `,
+    ans: `We are available Monday to Friday, 24x7. Please call us at +1-312-428-5732or write to us at info@thepatentdrawings.com `,
   },
   {
     ques: "Are my payment details secure?",

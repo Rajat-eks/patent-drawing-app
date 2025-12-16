@@ -232,10 +232,10 @@ const Footer: React.FC<IndexProps> = () => {
                     US -{" "}
                     <a
                       className="block"
-                      href="tel:+1-972-256-8133"
-                      aria-label="Call +1-972-256-8133"
+                      href="tel:+1-312-428-5732"
+                      aria-label="Call +1-312-428-5732 "
                     >
-                      +1-972-256-8133
+                     +1-312-428-5732 
                     </a>
                   </li>
                   <li className="cursor-pointer hover:border-l-2 h-5 pl-1 border-red flex items-start gap-2 ">

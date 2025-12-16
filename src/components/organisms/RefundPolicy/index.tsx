@@ -62,7 +62,7 @@ const RefundPolicy: React.FC<PageProps> = (props) => {
               requests sent beyond the allotted period or if the project has
               already begun. For more information on eligibility and refund
               processing, the customer may consult the previously mentioned
-              refund policy or our customer care at +1-972-256-8133.
+              refund policy or our customer care at +1-312-428-5732.
             </li>
           </ul>
         </section>
@@ -95,7 +95,7 @@ const RefundPolicy: React.FC<PageProps> = (props) => {
           </span>
           <span>
             <b>Support Call: </b>
-            +1-972-256-8133 , (469) 666-1181
+            +1-312-428-5732, (469) 666-1181
           </span>
           <span>
             <b>Office: </b>Suite-427,425 Broadhollow Road <br />

@@ -42,8 +42,8 @@ const TopHeader: React.FC<TopHeaderProps> = (props) => {
           <li className="cursor-pointer hover:border-l-2 h-5 pl-1 border-red flex items-start gap-2 ">
             <FiPhone size={16} />
             US{" "}
-            <a href="tel:+1-972-256-8133" aria-label="Call +1-972-256-8133">
-              +1-972-256-8133
+            <a href="tel:+1-312-428-5732" aria-label="Call +1-312-428-5732 ">
+              +1-312-428-5732 
             </a>
             ,{" "}
             <a href="tel:+14696661181" aria-label="Call (469) 666-1181">
