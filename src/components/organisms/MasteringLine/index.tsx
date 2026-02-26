@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MasteringGuideBook from "../../assets/img/mastering-guidebook.png";
 import Banner from "../../assets/img/mastering-banner.jpg";
 import { RequestForMastering } from "../../../services/contact/connectForSheet";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { getSavedFormDetails, saveFormDetails } from "../../../utils/formPrefill";
 
 interface IndexProps {
   // define props here
@@ -26,13 +27,30 @@ const MasteringLine: React.FC<IndexProps> = (props) => {
     message: "",
   });
 
+  useEffect(() => {
+    const saved = getSavedFormDetails();
+    setUserDetails((prev) => ({
+      ...prev,
+      name: saved.name ?? "",
+      email: saved.email ?? "",
+      phone: saved.phone ?? prev.phone,
+      organization: saved.organization ?? "",
+    }));
+  }, []);
+
   //On Chnage Handler
   const onChangeHandler = (e: any) => {
     const { value, name } = e.target;
-    setUserDetails({
-      ...userDetails,
-      [name]: value,
-    });
+    const next = { ...userDetails, [name]: value };
+    setUserDetails(next);
+    if (["name", "email", "phone", "organization"].includes(name)) {
+      saveFormDetails({
+        name: next.name,
+        email: next.email,
+        phone: next.phone,
+        organization: next.organization,
+      });
+    }
   };
 
   //Send a Query

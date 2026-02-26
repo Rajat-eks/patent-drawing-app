@@ -1,7 +1,8 @@
 "use client";
-import React, { memo, ReactElement, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 import { ContactWithUs } from "../../../../../services/contact";
 import { useRouter } from "next/navigation";
+import { getSavedFormDetails, saveFormDetails } from "../../../../../utils/formPrefill";
 
 interface IndexProps {
   // define props here
@@ -23,15 +24,32 @@ const Inquiry: React.FC<IndexProps> = (props) => {
     message: "",
   });
 
+  useEffect(() => {
+    const saved = getSavedFormDetails();
+    setUserDetails((prev) => ({
+      ...prev,
+      name: saved.name ?? "",
+      email: saved.email ?? "",
+      phone: saved.phone ?? prev.phone,
+      organization: saved.organization ?? "",
+    }));
+  }, []);
+
   //On Change Handler
   const onChangeHandler = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { value, name } = e.target;
-    setUserDetails({
-      ...userDetails,
-      [name]: value,
-    });
+    const next = { ...userDetails, [name]: value };
+    setUserDetails(next);
+    if (["name", "email", "phone", "organization"].includes(name)) {
+      saveFormDetails({
+        name: next.name,
+        email: next.email,
+        phone: next.phone,
+        organization: next.organization,
+      });
+    }
   };
 
   //Send a Query

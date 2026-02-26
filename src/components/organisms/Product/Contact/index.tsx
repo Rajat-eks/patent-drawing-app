@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ContactWithUs } from "../../../../services/contact";
+import { getSavedFormDetails, saveFormDetails } from "../../../../utils/formPrefill";
 import { FiPhone } from "react-icons/fi";
 import { CiLinkedin, CiLocationOn } from "react-icons/ci";
 import { FaFacebookF, FaXTwitter } from "react-icons/fa6";
@@ -35,13 +36,30 @@ const index: React.FC<IndexProps> = ({ service }) => {
     files: [],
   });
 
+  useEffect(() => {
+    const saved = getSavedFormDetails();
+    setUserDetails((prev) => ({
+      ...prev,
+      name: saved.name ?? "",
+      email: saved.email ?? "",
+      phone: saved.phone ?? prev.phone,
+      organization: saved.organization ?? "",
+    }));
+  }, []);
+
   //On Chnage Handler
   const onChangeHandler = (e: any) => {
     const { value, name } = e.target;
-    setUserDetails({
-      ...userDetails,
-      [name]: value,
-    });
+    const next = { ...userDetails, [name]: value };
+    setUserDetails(next);
+    if (["name", "email", "phone", "organization"].includes(name)) {
+      saveFormDetails({
+        name: next.name,
+        email: next.email,
+        phone: next.phone,
+        organization: next.organization,
+      });
+    }
   };
 
   //Send a Query

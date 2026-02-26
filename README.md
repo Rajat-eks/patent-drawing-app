@@ -20,6 +20,24 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Email Setup For Form Submissions
+
+To automatically send an email when users submit website forms, create a `.env.local` file in the project root with:
+
+```bash
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-smtp-username
+SMTP_PASS=your-smtp-password
+CONTACT_TO_EMAIL=your-receiving-email@example.com
+CONTACT_FROM_EMAIL=your-sender-email@example.com
+```
+
+Notes:
+- `CONTACT_TO_EMAIL` is where you receive form emails.
+- `CONTACT_FROM_EMAIL` is optional; if omitted, `SMTP_USER` is used.
+- For SSL SMTP (port `465`), set `SMTP_PORT=465`.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
