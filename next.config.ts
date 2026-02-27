@@ -11,9 +11,7 @@ const nextConfig: NextConfig = {
       "tpd-server-xe10.onrender.com",
     ], // ✅ add the domain here
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  
 
   async redirects() {
     return [
