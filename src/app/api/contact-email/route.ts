@@ -16,12 +16,14 @@ const getEnv = (key: string) => process.env[key]?.trim();
 
 const requiredEnvs = ["SMTP_HOST", "SMTP_PORT", "SMTP_USER", "SMTP_PASS"];
 
-const hasMailConfig = requiredEnvs.every((key) => Boolean(getEnv(key)));
+function hasMailConfig(): boolean {
+  return requiredEnvs.every((key) => Boolean(getEnv(key)));
+}
 
 const clean = (value?: string) => value?.trim() || "";
 
 export async function POST(request: Request) {
-  if (!hasMailConfig) {
+  if (!hasMailConfig()) {
     return NextResponse.json(
       {
         message:
@@ -53,19 +55,20 @@ export async function POST(request: Request) {
       );
     }
 
-    const smtpPort = Number(getEnv("SMTP_PORT"));
+    const smtpPort = Number(getEnv("SMTP_PORT")) || 587;
+    const secure = smtpPort === 465;
     const transporter = nodemailer.createTransport({
       host: getEnv("SMTP_HOST"),
       port: smtpPort,
-      secure: smtpPort === 465,
+      secure,
       auth: {
         user: getEnv("SMTP_USER"),
         pass: getEnv("SMTP_PASS"),
       },
     });
 
-    const toEmail = getEnv("CONTACT_TO_EMAIL") || getEnv("SMTP_USER");
-    const fromEmail = getEnv("CONTACT_FROM_EMAIL") || getEnv("SMTP_USER");
+    const fromEmail = getEnv("SMTP_FROM") || getEnv("SMTP_USER");
+    const toEmail = getEnv("SMTP_TO") || getEnv("SMTP_USER");
 
     const html = `
       <h2>New Website Form Submission</h2>
