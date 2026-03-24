@@ -4,7 +4,7 @@ import "./globals.css";
 import DashboardLayout from "@/components/layout/dashboardLayout";
 
 export const metadata: Metadata = {
-  title: "PatDraw | Patent Drawing Services Company",
+  title: "PatDraw | Patent Drawing Services Company | $28 Per Sheet",
   description:
     "PatDraw, a leading patent drawing services company, delivers expert and mediatory support, ensuring precise and compliant patent illustrations for your inventions.",
 };

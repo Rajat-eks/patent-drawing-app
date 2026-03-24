@@ -24,8 +24,8 @@ const GetInTouch = () => {
     }));
   };
 
-  const closeHandler = (e:any) => {
-    if (e.currentTarget.id === "closeWrapper") {
+  const closeHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
       setIsOpen(false);
     }
   };
@@ -44,6 +44,7 @@ const GetInTouch = () => {
       toast.success(response.message);
       navigate.push("/thank-you-contact");
     } catch (error) {
+      console.log(error);
       throw new Error("An Error Occured");
     } finally {
       setData({
@@ -68,18 +69,21 @@ const GetInTouch = () => {
 
       {isOpen && (
         <div
-          onClick={(e) => closeHandler(e)}
-          id="closeWrapper"
+          onClick={closeHandler}
           className="w-full  bg-transparent bg-black fixed inset-0 z-[100] flex justify-center items-center  my-auto border-2 mr-4 md:mr-0"
         >
-          <div className="flex flex-col justify-center items-center  rounded-2xl shadow-lg transform mx-auto my-auto translate-x-3 py-5 bg-[#F1F1F3] ">
-            <span
-              id="closeWrapper"
-              onClick={(e: React.MouseEvent<HTMLSpanElement>) => closeHandler(e)}
+          <div
+            className="flex flex-col justify-center items-center  rounded-2xl shadow-lg transform mx-auto my-auto translate-x-3 py-5 bg-[#F1F1F3] "
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
               className="z-10 absolute top-2 right-4 cursor-pointer"
+              aria-label="Close"
             >
               X
-            </span>
+            </button>
             <h2 className="md:text-2xl text-xl font-bold">
               Request a Call Back!
             </h2>
@@ -99,7 +103,7 @@ const GetInTouch = () => {
                 name="name"
                 required
                 placeholder="Your Name"
-                className="w-full p-2 text-[14px] rounded focus:outline-customBlue"
+                className="w-full p-2 text-[14px] border-[1px] border-gray-500 rounded focus:outline-customBlue"
               />
               <input
                 type="text"
@@ -108,7 +112,7 @@ const GetInTouch = () => {
                 value={data?.email}
                 name="email"
                 placeholder="Your Email*"
-                className="w-full p-2 text-[14px] rounded focus:outline-customBlue"
+                className="w-full p-2 text-[14px] border-[1px] border-gray-500  rounded focus:outline-customBlue"
               />
               <input
                 type="text"
@@ -117,7 +121,7 @@ const GetInTouch = () => {
                 name="phone"
                 placeholder="Phone with country code*"
                 required
-                className="w-full p-2 text-[14px] rounded focus:outline-customBlue"
+                className="w-full p-2 text-[14px] border-[1px] border-gray-500  rounded focus:outline-customBlue"
               />
               <input
                 type="text"
@@ -126,7 +130,7 @@ const GetInTouch = () => {
                 name="message"
                 placeholder="Your Message"
                 required
-                className="w-full p-2 text-[14px] rounded focus:outline-customBlue"
+                className="w-full p-2 text-[14px] border-[1px] border-gray-500  rounded focus:outline-customBlue"
               />
 
               <button
