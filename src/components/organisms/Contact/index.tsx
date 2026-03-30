@@ -77,6 +77,14 @@ const Contact: React.FC<ContactProps> = () => {
           </h1>
 
           <h3 className=" sm:text-xl md:text-2xl ">CONNECT WITH US TODAY!</h3>
+          <a
+            href="https://thepatentdrawings.com/product/utility-patent-drawings"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 text-[14px] sm:text-[16px] font-semibold text-blue underline hover:no-underline"
+          >
+            Contact Us &gt; Utility Patent Drawings @ $28/Sheet
+          </a>
         </div>
       </section>
       <section className=" bg-white  p-2 sm:p-8 md:p-20 py-8">

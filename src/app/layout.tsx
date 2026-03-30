@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import DashboardLayout from "@/components/layout/dashboardLayout";
+import TimedBannerPopup from "@/components/common/TimedBannerPopup";
 
 export const metadata: Metadata = {
   title: "PatDraw | Patent Drawing Services Company | $28 Per Sheet",
@@ -25,6 +26,7 @@ export default function RootLayout({
       </head>
       <body>
         <DashboardLayout>{children}</DashboardLayout>
+        <TimedBannerPopup />
 
         {/* Microsoft Clarity */}
         <Script id="clarity-script" strategy="afterInteractive">
