@@ -18,7 +18,7 @@ const HeroSection: React.FC<HeroSectionProps> = (props) => {
       </p>
       <div className="flex gap-5 text-[14px] pt-4">
         <Link
-          href={"/contact-us"}
+          href={"/product/utility-patent-drawings"}
           className="p-2 rounded text-white bg-blue text-[13px]"
         >
           Utility Patent Drawings @ $28/Sheet
