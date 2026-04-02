@@ -21,13 +21,13 @@ const HeroSection: React.FC<HeroSectionProps> = (props) => {
           href={"/contact-us"}
           className="p-2 rounded text-white bg-blue text-[13px]"
         >
-          Contact Us
+          Utility Patent Drawings @ $28/Sheet
         </Link>
         <Link
-          href={"/patent-drawing-samples"}
+          href={"/product/design-patent-drawings"}
           className="py-2 px-3 rounded text-white bg-red text-[13px] "
         >
-          View Samples
+          Design Patent Drawings @ $28/Sheet
         </Link>
       </div>
     </main>
